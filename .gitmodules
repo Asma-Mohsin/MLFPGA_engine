@@ -1,0 +1,4 @@
+[submodule "ip/Fabric"]
+	path = ip/Fabric
+	url = git@github.com:FPGA-Research/FABulous-OWAS.git
+	branch = MLFPGA
