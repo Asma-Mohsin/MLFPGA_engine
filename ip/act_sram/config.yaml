@@ -1,0 +1,90 @@
+
+meta:
+  version: 3
+  flow: Classic
+  substituting_steps:
+    Magic.DRC: null
+
+DESIGN_NAME: psum_requant_container
+
+VERILOG_FILES:
+- dir::./*.sv
+- dir::../common/sram_bank.sv
+- dir::../common/RM_IHPSG13_1P_256x32_c2_bm_bist.v
+
+#VERILOG_DEFINES: [FUNCTIONAL]
+
+USE_SLANG: True
+#SLANG_ARGUMENTS: ['--keep-hierarchy']
+# NOTE: Seems to only report false positives, flow runs also with the unmapped
+# cells
+ERROR_ON_SYNTH_CHECKS: False
+
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+
+PNR_SDC_FILE: dir::constraint.sdc
+SIGNOFF_SDC_FILE: dir::constraint.sdc
+FALLBACK_SDC: dir::constraint.sdc
+IO_PIN_ORDER_CFG: dir::pin_order.cfg
+
+# Timing
+CLOCK_PORT: clk_i
+CLOCK_NET: clk_i
+CLOCK_PERIOD: 10.0
+
+# NOTE: Use these if the setup timing is violated in the typical corner
+PL_RESIZER_SETUP_SLACK_MARGIN: 2.5
+PL_RESIZER_SETUP_MAX_BUFFER_PCT: 80
+
+ERROR_ON_DISCONNECTED_PINS: False
+
+# Floorplanning
+
+FP_SIZING: absolute
+SYNTH_STRATEGY: "AREA 3"
+
+DIE_AREA: [0, 0, 460, 480]
+#PDN_CORE_RING: True
+PL_TARGET_DENSITY_PCT: 65
+GRT_ALLOW_CONGESTION: true
+
+# Allow free displacement (set to number that is definitely bigger than the die
+# size for each dimension)
+#PL_MAX_DISPLACEMENT_X: 2000
+PL_MAX_DISPLACEMENT_Y: 2000
+
+# PDN Setup
+
+VDD_NETS:
+- VDD
+GND_NETS:
+- VSS
+
+PDN_MULTILAYER: True
+
+PDN_MACRO_CONNECTIONS:
+  - "bank_A_sram.gen_ihp_256x32.u_sram_256x32 VDD VSS VDD! VSS!"
+  - "bank_A_sram.gen_ihp_256x32.u_sram_256x32 VDD VSS VDDARRAY! VSS!"
+  - "bank_B_sram.gen_ihp_256x32.u_sram_256x32 VDD VSS VDD! VSS!"
+  - "bank_B_sram.gen_ihp_256x32.u_sram_256x32 VDD VSS VDDARRAY! VSS!"
+
+MACROS:
+  RM_IHPSG13_1P_256x32_c2_bm_bist:
+    gds:
+      - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_256x32_c2_bm_bist.gds
+    lef:
+      - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_256x32_c2_bm_bist.lef
+    lib:
+      "*_typ_1p20V_25C":
+        - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x32_c2_bm_bist_typ_1p20V_25C.lib
+      "nom_fast_1p32V_m40C":
+        - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x32_c2_bm_bist_fast_1p32V_m55C.lib
+      "nom_slow_1p08V_125C":
+        - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x32_c2_bm_bist_slow_1p08V_125C.lib
+    instances:
+      bank_A_sram.gen_ihp_256x32.u_sram_256x32:
+        location: [30, 340]
+        orientation: FN
+      bank_B_sram.gen_ihp_256x32.u_sram_256x32:
+        location: [30, 17]
+        orientation: FS
