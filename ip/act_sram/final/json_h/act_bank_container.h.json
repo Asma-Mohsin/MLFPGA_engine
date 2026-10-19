@@ -1,0 +1,257 @@
+{
+  "creator": "Yosys 0.69 (git sha1 9f75ca1f9834a39a863915b5dae0c7b1e33533bc, Release, Clang /nix/store/874j5xydsj6nr6i1zdrjvhln5gmxvvrr-clang-wrapper-21.1.8/bin/clang++ 21.1.8)",
+  "modules": {
+    "act_bank_container": {
+      "attributes": {
+        "top": "00000000000000000000000000000001",
+        "src": "act_bank_container.sv:3.8"
+      },
+      "ports": {
+        "clk_i": {
+          "direction": "input",
+          "bits": [ 2 ]
+        },
+        "act_we": {
+          "direction": "input",
+          "bits": [ 3 ]
+        },
+        "act_addr": {
+          "direction": "input",
+          "bits": [ 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+        },
+        "act_wdata": {
+          "direction": "input",
+          "bits": [ 13, 14, 15, 16, 17, 18, 19, 20 ]
+        },
+        "act_rdata_west": {
+          "direction": "output",
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28 ]
+        },
+        "weight_in_west": {
+          "direction": "input",
+          "bits": [ 29, 30, 31, 32, 33, 34, 35, 36 ]
+        },
+        "weight_shift_en_west": {
+          "direction": "input",
+          "bits": [ 37 ]
+        },
+        "xbar_sel_west": {
+          "direction": "input",
+          "bits": [ 38, 39, 40, 41 ]
+        },
+        "out_act_west": {
+          "direction": "output",
+          "bits": [ 42, 43, 44, 45, 46, 47, 48, 49 ]
+        },
+        "clk_o": {
+          "direction": "output",
+          "bits": [ 2 ]
+        },
+        "act_rdata_east": {
+          "direction": "output",
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28 ]
+        },
+        "weight_in_east": {
+          "direction": "output",
+          "bits": [ 29, 30, 31, 32, 33, 34, 35, 36 ]
+        },
+        "weight_shift_en_east": {
+          "direction": "output",
+          "bits": [ 37 ]
+        },
+        "xbar_sel_east": {
+          "direction": "output",
+          "bits": [ 38, 39, 40, 41 ]
+        },
+        "out_act_east": {
+          "direction": "input",
+          "bits": [ 42, 43, 44, 45, 46, 47, 48, 49 ]
+        }
+      },
+      "cells": {
+        "$2": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "../common/sram_bank.sv:22.18-22.21"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 3 ],
+            "Y": [ 50 ]
+          }
+        },
+        "act_sram_inst.gen_ihp_512x8.u_sram_512x8": {
+          "hide_name": 0,
+          "type": "RM_IHPSG13_1P_512x8_c3_bm_bist",
+          "parameters": {
+          },
+          "attributes": {
+            "hdlname": "act_sram_inst gen_ihp_512x8 u_sram_512x8",
+            "src": "../common/sram_bank.sv:27.44"
+          },
+          "port_directions": {
+            "A_ADDR": "input",
+            "A_BIST_ADDR": "input",
+            "A_BIST_BM": "input",
+            "A_BIST_CLK": "input",
+            "A_BIST_DIN": "input",
+            "A_BIST_EN": "input",
+            "A_BIST_MEN": "input",
+            "A_BIST_REN": "input",
+            "A_BIST_WEN": "input",
+            "A_BM": "input",
+            "A_CLK": "input",
+            "A_DIN": "input",
+            "A_DLY": "input",
+            "A_DOUT": "output",
+            "A_MEN": "input",
+            "A_REN": "input",
+            "A_WEN": "input"
+          },
+          "connections": {
+            "A_ADDR": [ 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
+            "A_BIST_ADDR": [ "0", "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "A_BIST_BM": [ "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "A_BIST_CLK": [ "0" ],
+            "A_BIST_DIN": [ "0", "0", "0", "0", "0", "0", "0", "0" ],
+            "A_BIST_EN": [ "0" ],
+            "A_BIST_MEN": [ "0" ],
+            "A_BIST_REN": [ "0" ],
+            "A_BIST_WEN": [ "0" ],
+            "A_BM": [ "1", "1", "1", "1", "1", "1", "1", "1" ],
+            "A_CLK": [ 2 ],
+            "A_DIN": [ 13, 14, 15, 16, 17, 18, 19, 20 ],
+            "A_DLY": [ "1" ],
+            "A_DOUT": [ 21, 22, 23, 24, 25, 26, 27, 28 ],
+            "A_MEN": [ "1" ],
+            "A_REN": [ 50 ],
+            "A_WEN": [ 3 ]
+          }
+        }
+      },
+      "netnames": {
+        "act_addr": {
+          "hide_name": 0,
+          "bits": [ 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
+          "attributes": {
+            "hdlname": "act_addr"
+          }
+        },
+        "act_rdata_east": {
+          "hide_name": 0,
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28 ],
+          "attributes": {
+            "hdlname": "act_rdata_east"
+          }
+        },
+        "act_rdata_west": {
+          "hide_name": 0,
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28 ],
+          "attributes": {
+            "hdlname": "act_rdata_west"
+          }
+        },
+        "act_sram_inst.A_REN": {
+          "hide_name": 0,
+          "bits": [ 50 ],
+          "attributes": {
+            "hdlname": "act_sram_inst A_REN"
+          }
+        },
+        "act_wdata": {
+          "hide_name": 0,
+          "bits": [ 13, 14, 15, 16, 17, 18, 19, 20 ],
+          "attributes": {
+            "hdlname": "act_wdata"
+          }
+        },
+        "act_we": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "hdlname": "act_we"
+          }
+        },
+        "clk_i": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "hdlname": "clk_i"
+          }
+        },
+        "clk_o": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "hdlname": "clk_o"
+          }
+        },
+        "out_act_east": {
+          "hide_name": 0,
+          "bits": [ 42, 43, 44, 45, 46, 47, 48, 49 ],
+          "attributes": {
+            "hdlname": "out_act_east"
+          }
+        },
+        "out_act_west": {
+          "hide_name": 0,
+          "bits": [ 42, 43, 44, 45, 46, 47, 48, 49 ],
+          "attributes": {
+            "hdlname": "out_act_west"
+          }
+        },
+        "weight_in_east": {
+          "hide_name": 0,
+          "bits": [ 29, 30, 31, 32, 33, 34, 35, 36 ],
+          "attributes": {
+            "hdlname": "weight_in_east"
+          }
+        },
+        "weight_in_west": {
+          "hide_name": 0,
+          "bits": [ 29, 30, 31, 32, 33, 34, 35, 36 ],
+          "attributes": {
+            "hdlname": "weight_in_west"
+          }
+        },
+        "weight_shift_en_east": {
+          "hide_name": 0,
+          "bits": [ 37 ],
+          "attributes": {
+            "hdlname": "weight_shift_en_east"
+          }
+        },
+        "weight_shift_en_west": {
+          "hide_name": 0,
+          "bits": [ 37 ],
+          "attributes": {
+            "hdlname": "weight_shift_en_west"
+          }
+        },
+        "xbar_sel_east": {
+          "hide_name": 0,
+          "bits": [ 38, 39, 40, 41 ],
+          "attributes": {
+            "hdlname": "xbar_sel_east"
+          }
+        },
+        "xbar_sel_west": {
+          "hide_name": 0,
+          "bits": [ 38, 39, 40, 41 ],
+          "attributes": {
+            "hdlname": "xbar_sel_west"
+          }
+        }
+      }
+    }
+  }
+}

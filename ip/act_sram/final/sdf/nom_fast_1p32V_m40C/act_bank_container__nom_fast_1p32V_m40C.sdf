@@ -1,0 +1,1179 @@
+(DELAYFILE
+ (SDFVERSION "3.0")
+ (DESIGN "act_bank_container")
+ (DATE "Sat Oct 17 13:34:21 2026")
+ (VENDOR "Parallax")
+ (PROGRAM "STA")
+ (VERSION "2.7.0")
+ (DIVIDER .)
+ (VOLTAGE 1.320::1.320)
+ (PROCESS "1.000::1.000")
+ (TEMPERATURE -40.000::-40.000)
+ (TIMESCALE 1ns)
+ (CELL
+  (CELLTYPE "act_bank_container")
+  (INSTANCE)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT act_we input18.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT clk_i _089_.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT clk_i act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_CLK (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT weight_shift_en_west _106_.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[8] input9.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[7] input8.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[6] input7.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[5] input6.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[4] input5.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[3] input4.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[2] input3.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[1] input2.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_addr[0] input1.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_wdata[7] input17.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_wdata[6] input16.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_wdata[5] input15.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_wdata[4] input14.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_wdata[3] input13.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_wdata[2] input12.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_wdata[1] input11.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_wdata[0] input10.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT out_act_east[7] _097_.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT out_act_east[6] _096_.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT out_act_east[5] _095_.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT out_act_east[4] _094_.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT out_act_east[3] _093_.A (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT out_act_east[2] _092_.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT out_act_east[1] _091_.A (0.005:0.005:0.005) (0.005:0.005:0.005))
+    (INTERCONNECT out_act_east[0] _090_.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT weight_in_west[7] _105_.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT weight_in_west[6] _104_.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT weight_in_west[5] _103_.A (0.005:0.005:0.005) (0.005:0.005:0.005))
+    (INTERCONNECT weight_in_west[4] _102_.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT weight_in_west[3] _101_.A (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT weight_in_west[2] _100_.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT weight_in_west[1] ANTENNA_2.A (0.005:0.005:0.005) (0.005:0.005:0.005))
+    (INTERCONNECT weight_in_west[1] _099_.A (0.005:0.005:0.005) (0.005:0.005:0.005))
+    (INTERCONNECT weight_in_west[0] ANTENNA_1.A (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT weight_in_west[0] _098_.A (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT xbar_sel_west[3] _110_.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT xbar_sel_west[2] _109_.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT xbar_sel_west[1] _108_.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT xbar_sel_west[0] _107_.A (0.002:0.002:0.003) (0.002:0.002:0.003))
+    (INTERCONNECT _040_.Y act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_REN (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _081_.X output27.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT _082_.X output28.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT _083_.X output29.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT _084_.X output30.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT _085_.X output31.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _086_.X output32.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT _087_.X output33.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _088_.X output34.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _089_.X output35.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT _090_.X output36.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT _091_.X output37.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _092_.X output38.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT _093_.X output39.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _094_.X output40.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT _095_.X output41.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _096_.X output42.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT _097_.X output43.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT _098_.X output44.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _099_.X output45.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _100_.X output46.A (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT _101_.X output47.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _102_.X output48.A (0.005:0.005:0.005) (0.005:0.005:0.005))
+    (INTERCONNECT _103_.X output49.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _104_.X output50.A (0.008:0.008:0.008) (0.008:0.008:0.008))
+    (INTERCONNECT _105_.X output51.A (0.008:0.008:0.008) (0.008:0.008:0.008))
+    (INTERCONNECT _106_.X output52.A (0.005:0.005:0.005) (0.005:0.005:0.005))
+    (INTERCONNECT _107_.X output53.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT _108_.X output54.A (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT _109_.X output55.A (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT _110_.X output56.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[7] _088_.A (0.005:0.005:0.005) (0.006:0.004:0.001))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[7] output26.A (0.008:0.008:0.008) (0.011:0.008:0.006))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[6] _087_.A (0.005:0.005:0.005) (0.005:0.005:0.005))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[6] output25.A (0.009:0.009:0.009) (0.010:0.010:0.010))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[5] _086_.A (0.005:0.005:0.005) (0.002:0.002:0.002))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[5] output24.A (0.008:0.008:0.008) (0.006:0.006:0.006))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[4] _085_.A (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[4] output23.A (0.006:0.006:0.006) (0.005:0.005:0.005))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[3] _084_.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[3] output22.A (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[2] _083_.A (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[2] output21.A (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[1] _082_.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[1] output20.A (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[0] _081_.A (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DOUT[0] output19.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_57.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[0] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_58.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[1] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_59.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[2] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_60.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[3] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_61.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[4] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_62.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[5] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_63.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[6] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_64.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[7] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_65.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_ADDR[8] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_66.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_BM[0] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_67.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_BM[1] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_68.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_BM[2] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_69.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_BM[3] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_70.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_BM[4] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_71.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_BM[5] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_72.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_BM[6] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_73.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_BM[7] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_74.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_CLK (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_75.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_DIN[0] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_76.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_DIN[1] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_77.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_DIN[2] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_78.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_DIN[3] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_79.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_DIN[4] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_80.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_DIN[5] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_81.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_DIN[6] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_82.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_DIN[7] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_83.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_EN (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_84.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_MEN (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_85.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_REN (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_86.L_LO act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BIST_WEN (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_87.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BM[0] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_88.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BM[1] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_89.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BM[2] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_90.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BM[3] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_91.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BM[4] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_92.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BM[5] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_93.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BM[6] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_94.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_BM[7] (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_95.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DLY (0.000:0.000:0.000))
+    (INTERCONNECT act_sram_inst\.gen_ihp_512x8\.u_sram_512x8_96.L_HI act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_MEN (0.000:0.000:0.000))
+    (INTERCONNECT input1.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[0] (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT input10.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DIN[0] (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT input11.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DIN[1] (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT input12.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DIN[2] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT input13.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DIN[3] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT input14.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DIN[4] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT input15.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DIN[5] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT input16.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DIN[6] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT input17.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_DIN[7] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT input18.X _040_.A (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT input18.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_WEN (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT input2.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[1] (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT input3.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[2] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT input4.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[3] (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT input5.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[4] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT input6.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[5] (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT input7.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[6] (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT input8.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[7] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT input9.X act_sram_inst\.gen_ihp_512x8\.u_sram_512x8.A_ADDR[8] (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT output19.X act_rdata_east[0] (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT output20.X act_rdata_east[1] (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT output21.X act_rdata_east[2] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT output22.X act_rdata_east[3] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT output23.X act_rdata_east[4] (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT output24.X act_rdata_east[5] (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT output25.X act_rdata_east[6] (0.001:0.001:0.001) (0.001:0.001:0.001))
+    (INTERCONNECT output26.X act_rdata_east[7] (0.002:0.002:0.002) (0.001:0.001:0.001))
+    (INTERCONNECT output27.X act_rdata_west[0] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output28.X act_rdata_west[1] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output29.X act_rdata_west[2] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output30.X act_rdata_west[3] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output31.X act_rdata_west[4] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output32.X act_rdata_west[5] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output33.X act_rdata_west[6] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output34.X act_rdata_west[7] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output35.X clk_o (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output36.X out_act_west[0] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output37.X out_act_west[1] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output38.X out_act_west[2] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output39.X out_act_west[3] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output40.X out_act_west[4] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output41.X out_act_west[5] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output42.X out_act_west[6] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output43.X out_act_west[7] (0.000:0.000:0.000) (0.000:0.000:0.000))
+    (INTERCONNECT output44.X weight_in_east[0] (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT output45.X weight_in_east[1] (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT output46.X weight_in_east[2] (0.005:0.005:0.005) (0.005:0.005:0.005))
+    (INTERCONNECT output47.X weight_in_east[3] (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT output48.X weight_in_east[4] (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT output49.X weight_in_east[5] (0.004:0.004:0.004) (0.004:0.004:0.004))
+    (INTERCONNECT output50.X weight_in_east[6] (0.003:0.003:0.003) (0.003:0.003:0.003))
+    (INTERCONNECT output51.X weight_in_east[7] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT output52.X weight_shift_en_east (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT output53.X xbar_sel_east[0] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT output54.X xbar_sel_east[1] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT output55.X xbar_sel_east[2] (0.002:0.002:0.002) (0.002:0.002:0.002))
+    (INTERCONNECT output56.X xbar_sel_east[3] (0.001:0.001:0.001) (0.001:0.001:0.001))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_inv_1")
+  (INSTANCE _040_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A Y (0.037:0.038:0.038) (0.040:0.040:0.040))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _081_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.073:0.073:0.074) (0.067:0.067:0.068))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _082_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.073:0.074:0.074) (0.067:0.068:0.068))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _083_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.071:0.072:0.072) (0.065:0.066:0.066))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _084_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.070:0.070:0.071) (0.064:0.065:0.065))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _085_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.055:0.056:0.056) (0.050:0.050:0.051))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _086_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.062:0.062:0.063) (0.055:0.055:0.056))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _087_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.059:0.059:0.060) (0.051:0.051:0.052))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _088_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.054:0.055:0.055) (0.047:0.048:0.049))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _089_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.043:0.044:0.044) (0.043:0.044:0.044))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _090_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.072:0.072:0.073) (0.068:0.068:0.069))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _091_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.037:0.037:0.037) (0.038:0.038:0.038))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _092_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.062:0.063:0.063) (0.060:0.060:0.060))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _093_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.036:0.036:0.036) (0.036:0.037:0.037))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _094_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.064:0.064:0.065) (0.061:0.061:0.061))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _095_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.037:0.037:0.038) (0.037:0.038:0.038))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _096_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.049:0.049:0.049) (0.048:0.048:0.049))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _097_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.046:0.046:0.047) (0.045:0.046:0.046))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _098_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.036:0.036:0.037) (0.037:0.037:0.037))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _099_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.037:0.037:0.038) (0.038:0.038:0.039))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _100_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.089:0.089:0.090) (0.082:0.082:0.083))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _101_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.038:0.038:0.039) (0.039:0.039:0.039))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _102_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.099:0.099:0.099) (0.090:0.090:0.091))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _103_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.037:0.038:0.038) (0.038:0.039:0.039))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _104_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.114:0.114:0.115) (0.102:0.103:0.103))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _105_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.120:0.120:0.121) (0.108:0.108:0.108))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _106_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.101:0.101:0.102) (0.092:0.092:0.093))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _107_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.035:0.035:0.036) (0.036:0.036:0.036))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _108_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.085:0.085:0.086) (0.079:0.079:0.079))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _109_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.069:0.069:0.069) (0.065:0.065:0.065))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE _110_)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.034:0.035:0.035) (0.035:0.036:0.036))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "RM_IHPSG13_1P_512x8_c3_bm_bist")
+  (INSTANCE act_sram_inst\.gen_ihp_512x8\.u_sram_512x8)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A_CLK A_DOUT[0] (1.847:1.848:1.848) (1.807:1.808:1.808))
+    (IOPATH A_CLK A_DOUT[1] (1.851:1.851:1.851) (1.810:1.810:1.811))
+    (IOPATH A_CLK A_DOUT[2] (1.850:1.851:1.851) (1.810:1.810:1.811))
+    (IOPATH A_CLK A_DOUT[3] (1.850:1.851:1.851) (1.810:1.810:1.810))
+    (IOPATH A_CLK A_DOUT[4] (1.865:1.865:1.865) (1.820:1.820:1.820))
+    (IOPATH A_CLK A_DOUT[5] (1.866:1.866:1.867) (1.820:1.820:1.820))
+    (IOPATH A_CLK A_DOUT[6] (1.874:1.875:1.875) (1.825:1.826:1.826))
+    (IOPATH A_CLK A_DOUT[7] (1.869:1.869:1.870) (1.822:1.822:1.822))
+   )
+  )
+  (TIMINGCHECK
+    (HOLD (COND A_W_ACCESS (posedge A_DIN[0])) (COND A_W_ACCESS (posedge A_CLK)) (0.238:0.238:0.238))
+    (HOLD (COND A_W_ACCESS (negedge A_DIN[0])) (COND A_W_ACCESS (posedge A_CLK)) (0.218:0.218:0.218))
+    (HOLD (COND A_W_ACCESS (posedge A_DIN[1])) (COND A_W_ACCESS (posedge A_CLK)) (0.250:0.250:0.250))
+    (HOLD (COND A_W_ACCESS (negedge A_DIN[1])) (COND A_W_ACCESS (posedge A_CLK)) (0.228:0.228:0.228))
+    (HOLD (COND A_W_ACCESS (posedge A_DIN[2])) (COND A_W_ACCESS (posedge A_CLK)) (0.257:0.257:0.257))
+    (HOLD (COND A_W_ACCESS (negedge A_DIN[2])) (COND A_W_ACCESS (posedge A_CLK)) (0.233:0.233:0.233))
+    (HOLD (COND A_W_ACCESS (posedge A_DIN[3])) (COND A_W_ACCESS (posedge A_CLK)) (0.258:0.258:0.258))
+    (HOLD (COND A_W_ACCESS (negedge A_DIN[3])) (COND A_W_ACCESS (posedge A_CLK)) (0.233:0.233:0.233))
+    (HOLD (COND A_W_ACCESS (posedge A_DIN[4])) (COND A_W_ACCESS (posedge A_CLK)) (0.228:0.228:0.228))
+    (HOLD (COND A_W_ACCESS (negedge A_DIN[4])) (COND A_W_ACCESS (posedge A_CLK)) (0.209:0.209:0.209))
+    (HOLD (COND A_W_ACCESS (posedge A_DIN[5])) (COND A_W_ACCESS (posedge A_CLK)) (0.217:0.217:0.217))
+    (HOLD (COND A_W_ACCESS (negedge A_DIN[5])) (COND A_W_ACCESS (posedge A_CLK)) (0.199:0.199:0.199))
+    (HOLD (COND A_W_ACCESS (posedge A_DIN[6])) (COND A_W_ACCESS (posedge A_CLK)) (0.205:0.205:0.205))
+    (HOLD (COND A_W_ACCESS (negedge A_DIN[6])) (COND A_W_ACCESS (posedge A_CLK)) (0.190:0.190:0.190))
+    (HOLD (COND A_W_ACCESS (posedge A_DIN[7])) (COND A_W_ACCESS (posedge A_CLK)) (0.223:0.223:0.223))
+    (HOLD (COND A_W_ACCESS (negedge A_DIN[7])) (COND A_W_ACCESS (posedge A_CLK)) (0.206:0.206:0.206))
+    (SETUP (COND A_W_ACCESS (posedge A_DIN[0])) (COND A_W_ACCESS (posedge A_CLK)) (-0.133:-0.133:-0.133))
+    (SETUP (COND A_W_ACCESS (negedge A_DIN[0])) (COND A_W_ACCESS (posedge A_CLK)) (-0.118:-0.118:-0.118))
+    (SETUP (COND A_W_ACCESS (posedge A_DIN[1])) (COND A_W_ACCESS (posedge A_CLK)) (-0.144:-0.144:-0.144))
+    (SETUP (COND A_W_ACCESS (negedge A_DIN[1])) (COND A_W_ACCESS (posedge A_CLK)) (-0.128:-0.128:-0.128))
+    (SETUP (COND A_W_ACCESS (posedge A_DIN[2])) (COND A_W_ACCESS (posedge A_CLK)) (-0.151:-0.151:-0.151))
+    (SETUP (COND A_W_ACCESS (negedge A_DIN[2])) (COND A_W_ACCESS (posedge A_CLK)) (-0.133:-0.133:-0.133))
+    (SETUP (COND A_W_ACCESS (posedge A_DIN[3])) (COND A_W_ACCESS (posedge A_CLK)) (-0.152:-0.152:-0.152))
+    (SETUP (COND A_W_ACCESS (negedge A_DIN[3])) (COND A_W_ACCESS (posedge A_CLK)) (-0.133:-0.133:-0.133))
+    (SETUP (COND A_W_ACCESS (posedge A_DIN[4])) (COND A_W_ACCESS (posedge A_CLK)) (-0.123:-0.123:-0.123))
+    (SETUP (COND A_W_ACCESS (negedge A_DIN[4])) (COND A_W_ACCESS (posedge A_CLK)) (-0.109:-0.109:-0.109))
+    (SETUP (COND A_W_ACCESS (posedge A_DIN[5])) (COND A_W_ACCESS (posedge A_CLK)) (-0.111:-0.111:-0.111))
+    (SETUP (COND A_W_ACCESS (negedge A_DIN[5])) (COND A_W_ACCESS (posedge A_CLK)) (-0.099:-0.099:-0.099))
+    (SETUP (COND A_W_ACCESS (posedge A_DIN[6])) (COND A_W_ACCESS (posedge A_CLK)) (-0.097:-0.097:-0.097))
+    (SETUP (COND A_W_ACCESS (negedge A_DIN[6])) (COND A_W_ACCESS (posedge A_CLK)) (-0.090:-0.090:-0.090))
+    (SETUP (COND A_W_ACCESS (posedge A_DIN[7])) (COND A_W_ACCESS (posedge A_CLK)) (-0.118:-0.118:-0.118))
+    (SETUP (COND A_W_ACCESS (negedge A_DIN[7])) (COND A_W_ACCESS (posedge A_CLK)) (-0.105:-0.105:-0.105))
+    (HOLD (COND A_RW_ACCESS (posedge A_BM[0])) (COND A_RW_ACCESS (posedge A_CLK)) (0.283:0.283:0.283))
+    (HOLD (COND A_RW_ACCESS (negedge A_BM[0])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (HOLD (COND A_RW_ACCESS (posedge A_BM[1])) (COND A_RW_ACCESS (posedge A_CLK)) (0.283:0.283:0.283))
+    (HOLD (COND A_RW_ACCESS (negedge A_BM[1])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (HOLD (COND A_RW_ACCESS (posedge A_BM[2])) (COND A_RW_ACCESS (posedge A_CLK)) (0.283:0.283:0.283))
+    (HOLD (COND A_RW_ACCESS (negedge A_BM[2])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (HOLD (COND A_RW_ACCESS (posedge A_BM[3])) (COND A_RW_ACCESS (posedge A_CLK)) (0.283:0.283:0.283))
+    (HOLD (COND A_RW_ACCESS (negedge A_BM[3])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (HOLD (COND A_RW_ACCESS (posedge A_BM[4])) (COND A_RW_ACCESS (posedge A_CLK)) (0.283:0.283:0.283))
+    (HOLD (COND A_RW_ACCESS (negedge A_BM[4])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (HOLD (COND A_RW_ACCESS (posedge A_BM[5])) (COND A_RW_ACCESS (posedge A_CLK)) (0.283:0.283:0.283))
+    (HOLD (COND A_RW_ACCESS (negedge A_BM[5])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (HOLD (COND A_RW_ACCESS (posedge A_BM[6])) (COND A_RW_ACCESS (posedge A_CLK)) (0.283:0.283:0.283))
+    (HOLD (COND A_RW_ACCESS (negedge A_BM[6])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (HOLD (COND A_RW_ACCESS (posedge A_BM[7])) (COND A_RW_ACCESS (posedge A_CLK)) (0.283:0.283:0.283))
+    (HOLD (COND A_RW_ACCESS (negedge A_BM[7])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (SETUP (COND A_RW_ACCESS (posedge A_BM[0])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.178:-0.178:-0.178))
+    (SETUP (COND A_RW_ACCESS (negedge A_BM[0])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.155:-0.155:-0.155))
+    (SETUP (COND A_RW_ACCESS (posedge A_BM[1])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.178:-0.178:-0.178))
+    (SETUP (COND A_RW_ACCESS (negedge A_BM[1])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.155:-0.155:-0.155))
+    (SETUP (COND A_RW_ACCESS (posedge A_BM[2])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.178:-0.178:-0.178))
+    (SETUP (COND A_RW_ACCESS (negedge A_BM[2])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.155:-0.155:-0.155))
+    (SETUP (COND A_RW_ACCESS (posedge A_BM[3])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.178:-0.178:-0.178))
+    (SETUP (COND A_RW_ACCESS (negedge A_BM[3])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.155:-0.155:-0.155))
+    (SETUP (COND A_RW_ACCESS (posedge A_BM[4])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.178:-0.178:-0.178))
+    (SETUP (COND A_RW_ACCESS (negedge A_BM[4])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.155:-0.155:-0.155))
+    (SETUP (COND A_RW_ACCESS (posedge A_BM[5])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.178:-0.178:-0.178))
+    (SETUP (COND A_RW_ACCESS (negedge A_BM[5])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.155:-0.155:-0.155))
+    (SETUP (COND A_RW_ACCESS (posedge A_BM[6])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.178:-0.178:-0.178))
+    (SETUP (COND A_RW_ACCESS (negedge A_BM[6])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.155:-0.155:-0.155))
+    (SETUP (COND A_RW_ACCESS (posedge A_BM[7])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.178:-0.178:-0.178))
+    (SETUP (COND A_RW_ACCESS (negedge A_BM[7])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.155:-0.155:-0.155))
+    (HOLD (posedge A_MEN) (posedge A_CLK) (0.182:0.182:0.182))
+    (HOLD (negedge A_MEN) (posedge A_CLK) (0.166:0.166:0.166))
+    (SETUP (posedge A_MEN) (posedge A_CLK) (0.138:0.138:0.138))
+    (SETUP (negedge A_MEN) (posedge A_CLK) (0.203:0.203:0.203))
+    (HOLD (COND A_MEN (posedge A_REN)) (COND A_MEN (posedge A_CLK)) (0.155:0.154:0.154))
+    (HOLD (COND A_MEN (negedge A_REN)) (COND A_MEN (posedge A_CLK)) (0.144:0.144:0.144))
+    (SETUP (COND A_MEN (posedge A_REN)) (COND A_MEN (posedge A_CLK)) (0.031:0.031:0.032))
+    (SETUP (COND A_MEN (negedge A_REN)) (COND A_MEN (posedge A_CLK)) (0.114:0.115:0.115))
+    (HOLD (COND A_MEN (posedge A_WEN)) (COND A_MEN (posedge A_CLK)) (0.097:0.096:0.094))
+    (HOLD (COND A_MEN (negedge A_WEN)) (COND A_MEN (posedge A_CLK)) (0.099:0.098:0.097))
+    (SETUP (COND A_MEN (posedge A_WEN)) (COND A_MEN (posedge A_CLK)) (0.214:0.215:0.217))
+    (SETUP (COND A_MEN (negedge A_WEN)) (COND A_MEN (posedge A_CLK)) (0.267:0.267:0.268))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[0])) (COND A_RW_ACCESS (posedge A_CLK)) (0.251:0.251:0.251))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[0])) (COND A_RW_ACCESS (posedge A_CLK)) (0.211:0.211:0.211))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[1])) (COND A_RW_ACCESS (posedge A_CLK)) (0.261:0.261:0.261))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[1])) (COND A_RW_ACCESS (posedge A_CLK)) (0.218:0.218:0.218))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[2])) (COND A_RW_ACCESS (posedge A_CLK)) (0.264:0.264:0.264))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[2])) (COND A_RW_ACCESS (posedge A_CLK)) (0.221:0.221:0.221))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[3])) (COND A_RW_ACCESS (posedge A_CLK)) (0.248:0.248:0.248))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[3])) (COND A_RW_ACCESS (posedge A_CLK)) (0.209:0.209:0.209))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[4])) (COND A_RW_ACCESS (posedge A_CLK)) (0.267:0.267:0.267))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[4])) (COND A_RW_ACCESS (posedge A_CLK)) (0.223:0.223:0.223))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[5])) (COND A_RW_ACCESS (posedge A_CLK)) (0.264:0.264:0.264))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[5])) (COND A_RW_ACCESS (posedge A_CLK)) (0.220:0.220:0.220))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[6])) (COND A_RW_ACCESS (posedge A_CLK)) (0.254:0.254:0.254))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[6])) (COND A_RW_ACCESS (posedge A_CLK)) (0.213:0.213:0.213))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[7])) (COND A_RW_ACCESS (posedge A_CLK)) (0.275:0.275:0.275))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[7])) (COND A_RW_ACCESS (posedge A_CLK)) (0.228:0.228:0.228))
+    (HOLD (COND A_RW_ACCESS (posedge A_ADDR[8])) (COND A_RW_ACCESS (posedge A_CLK)) (0.276:0.276:0.276))
+    (HOLD (COND A_RW_ACCESS (negedge A_ADDR[8])) (COND A_RW_ACCESS (posedge A_CLK)) (0.229:0.229:0.229))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[0])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.147:-0.147:-0.147))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[0])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.109:-0.109:-0.109))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[1])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.157:-0.157:-0.157))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[1])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.117:-0.117:-0.117))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[2])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.160:-0.160:-0.160))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[2])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.120:-0.120:-0.120))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[3])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.144:-0.144:-0.144))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[3])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.107:-0.107:-0.107))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[4])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.163:-0.163:-0.163))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[4])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.122:-0.122:-0.122))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[5])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.160:-0.160:-0.160))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[5])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.119:-0.119:-0.119))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[6])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.150:-0.150:-0.150))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[6])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.111:-0.111:-0.111))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[7])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.171:-0.171:-0.171))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[7])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.128:-0.128:-0.128))
+    (SETUP (COND A_RW_ACCESS (posedge A_ADDR[8])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.172:-0.172:-0.172))
+    (SETUP (COND A_RW_ACCESS (negedge A_ADDR[8])) (COND A_RW_ACCESS (posedge A_CLK)) (-0.128:-0.128:-0.128))
+    (WIDTH (posedge A_CLK) (0.120:0.120:0.120))
+    (HOLD (COND A_BIST_W_ACCESS A_BIST_DIN[0]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_W_ACCESS A_BIST_DIN[1]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_W_ACCESS A_BIST_DIN[2]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_W_ACCESS A_BIST_DIN[3]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_W_ACCESS A_BIST_DIN[4]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_W_ACCESS A_BIST_DIN[5]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_W_ACCESS A_BIST_DIN[6]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_W_ACCESS A_BIST_DIN[7]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_W_ACCESS A_BIST_DIN[0]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_W_ACCESS A_BIST_DIN[1]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_W_ACCESS A_BIST_DIN[2]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_W_ACCESS A_BIST_DIN[3]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_W_ACCESS A_BIST_DIN[4]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_W_ACCESS A_BIST_DIN[5]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_W_ACCESS A_BIST_DIN[6]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_W_ACCESS A_BIST_DIN[7]) (COND A_BIST_W_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_BM[0]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_BM[1]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_BM[2]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_BM[3]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_BM[4]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_BM[5]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_BM[6]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_BM[7]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_BM[0]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_BM[1]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_BM[2]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_BM[3]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_BM[4]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_BM[5]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_BM[6]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_BM[7]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD A_BIST_MEN (posedge A_BIST_CLK) (0.000:0.000:0.000))
+    (SETUP A_BIST_MEN (posedge A_BIST_CLK) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_MEN A_BIST_REN) (COND A_BIST_MEN (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_MEN A_BIST_REN) (COND A_BIST_MEN (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_MEN A_BIST_WEN) (COND A_BIST_MEN (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_MEN A_BIST_WEN) (COND A_BIST_MEN (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[0]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[1]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[2]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[3]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[4]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[5]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[6]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[7]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (HOLD (COND A_BIST_RW_ACCESS A_BIST_ADDR[8]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[0]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[1]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[2]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[3]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[4]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[5]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[6]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[7]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (SETUP (COND A_BIST_RW_ACCESS A_BIST_ADDR[8]) (COND A_BIST_RW_ACCESS (posedge A_BIST_CLK)) (0.000:0.000:0.000))
+    (WIDTH (posedge A_BIST_CLK) (0.000:0.000:0.000))
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input1)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.082:0.082:0.082) (0.076:0.076:0.076))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input10)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.052:0.052:0.052) (0.051:0.051:0.051))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input11)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.045:0.045:0.045) (0.045:0.045:0.045))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input12)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.041:0.041:0.041) (0.041:0.041:0.041))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input13)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.041:0.041:0.041) (0.041:0.041:0.041))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input14)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.059:0.059:0.059) (0.056:0.056:0.056))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input15)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.066:0.066:0.066) (0.063:0.063:0.063))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input16)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.075:0.075:0.075) (0.070:0.070:0.070))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input17)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.062:0.062:0.062) (0.059:0.059:0.059))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input18)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.074:0.075:0.076) (0.070:0.070:0.071))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input2)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.075:0.075:0.075) (0.071:0.071:0.071))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input3)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.074:0.074:0.074) (0.070:0.070:0.070))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input4)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.083:0.083:0.083) (0.077:0.077:0.077))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input5)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.072:0.072:0.072) (0.068:0.068:0.068))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input6)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.074:0.074:0.074) (0.069:0.069:0.069))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input7)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.080:0.080:0.080) (0.075:0.075:0.075))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input8)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.066:0.066:0.066) (0.063:0.063:0.063))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE input9)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.065:0.065:0.065) (0.062:0.062:0.062))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output19)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.064:0.064:0.064) (0.059:0.059:0.059))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output20)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.063:0.064:0.064) (0.059:0.059:0.059))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output21)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.069:0.069:0.069) (0.063:0.063:0.063))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output22)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.075:0.075:0.075) (0.068:0.068:0.069))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output23)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.072:0.072:0.072) (0.064:0.064:0.064))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output24)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.074:0.074:0.074) (0.065:0.065:0.066))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output25)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.084:0.084:0.084) (0.073:0.073:0.073))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output26)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.088:0.088:0.089) (0.078:0.078:0.078))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output27)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.058:0.058:0.058) (0.055:0.055:0.055))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output28)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.057:0.057:0.057) (0.054:0.054:0.055))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output29)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.056:0.056:0.056) (0.053:0.054:0.054))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output30)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.055:0.056:0.056) (0.053:0.053:0.053))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output31)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.048:0.048:0.048) (0.047:0.047:0.047))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output32)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.050:0.050:0.050) (0.048:0.048:0.048))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output33)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.047:0.048:0.048) (0.046:0.046:0.047))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output34)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.046:0.047:0.047) (0.046:0.046:0.046))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output35)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.055:0.055:0.055) (0.053:0.053:0.053))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output36)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.062:0.062:0.062) (0.058:0.058:0.058))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output37)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.046:0.046:0.046) (0.045:0.045:0.045))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output38)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.058:0.058:0.058) (0.055:0.055:0.055))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output39)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.045:0.046:0.046) (0.045:0.045:0.045))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output40)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.059:0.059:0.059) (0.055:0.056:0.056))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output41)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.046:0.046:0.047) (0.046:0.046:0.046))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output42)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.051:0.052:0.052) (0.050:0.050:0.050))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output43)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.051:0.051:0.052) (0.050:0.050:0.050))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output44)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.073:0.074:0.074) (0.069:0.069:0.069))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output45)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.077:0.077:0.077) (0.072:0.072:0.072))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output46)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.110:0.110:0.110) (0.099:0.099:0.099))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output47)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.079:0.080:0.080) (0.074:0.074:0.074))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output48)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.114:0.115:0.115) (0.104:0.104:0.104))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output49)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.088:0.088:0.088) (0.081:0.081:0.081))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output50)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.112:0.112:0.112) (0.102:0.102:0.102))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output51)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.103:0.103:0.104) (0.095:0.095:0.095))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output52)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.097:0.097:0.097) (0.089:0.090:0.090))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output53)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.077:0.077:0.077) (0.072:0.072:0.073))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output54)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.103:0.104:0.104) (0.094:0.094:0.094))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output55)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.086:0.087:0.087) (0.080:0.080:0.080))
+   )
+  )
+ )
+ (CELL
+  (CELLTYPE "sg13cmos5l_buf_1")
+  (INSTANCE output56)
+  (DELAY
+   (ABSOLUTE
+    (IOPATH A X (0.069:0.070:0.070) (0.066:0.066:0.066))
+   )
+  )
+ )
+)

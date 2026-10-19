@@ -1,0 +1,635 @@
+* NGSPICE file created from act_bank_container.ext - technology: ihp-sg13cmos5l
+
+* Black-box entry subcircuit for sg13cmos5l_decap_8 abstract view
+.subckt sg13cmos5l_decap_8 VDD VSS
+.ends
+
+* Black-box entry subcircuit for sg13cmos5l_tielo abstract view
+.subckt sg13cmos5l_tielo L_LO VDD VSS
+.ends
+
+* Black-box entry subcircuit for sg13cmos5l_tiehi abstract view
+.subckt sg13cmos5l_tiehi L_HI VDD VSS
+.ends
+
+* Black-box entry subcircuit for sg13cmos5l_fill_2 abstract view
+.subckt sg13cmos5l_fill_2 VDD VSS
+.ends
+
+* Black-box entry subcircuit for sg13cmos5l_decap_4 abstract view
+.subckt sg13cmos5l_decap_4 VDD VSS
+.ends
+
+* Black-box entry subcircuit for sg13cmos5l_buf_1 abstract view
+.subckt sg13cmos5l_buf_1 X A VDD VSS
+.ends
+
+* Black-box entry subcircuit for sg13cmos5l_fill_1 abstract view
+.subckt sg13cmos5l_fill_1 VDD VSS
+.ends
+
+* Black-box entry subcircuit for sg13cmos5l_inv_1 abstract view
+.subckt sg13cmos5l_inv_1 Y A VDD VSS
+.ends
+
+* Black-box entry subcircuit for RM_IHPSG13_1P_512x8_c3_bm_bist abstract view
+.subckt RM_IHPSG13_1P_512x8_c3_bm_bist A_DIN[4] A_DIN[3] A_BIST_DIN[4] A_BIST_DIN[3]
++ A_BM[4] A_BM[3] A_BIST_BM[4] A_BIST_BM[3] A_DOUT[4] A_DOUT[3] VSS VDD VDDARRAY A_DIN[5]
++ A_DIN[2] A_BIST_DIN[5] A_BIST_DIN[2] A_BM[5] A_BM[2] A_BIST_BM[5] A_BIST_BM[2] A_DOUT[5]
++ A_DOUT[2] A_DIN[6] A_DIN[1] A_BIST_DIN[6] A_BIST_DIN[1] A_BM[6] A_BM[1] A_BIST_BM[6]
++ A_BIST_BM[1] A_DOUT[6] A_DOUT[1] A_DIN[7] A_DIN[0] A_BIST_DIN[7] A_BIST_DIN[0] A_BM[7]
++ A_BM[0] A_BIST_BM[7] A_BIST_BM[0] A_DOUT[7] A_DOUT[0] A_ADDR[0] A_BIST_ADDR[0] A_ADDR[1]
++ A_BIST_ADDR[1] A_ADDR[2] A_BIST_ADDR[2] A_ADDR[3] A_BIST_ADDR[3] A_ADDR[4] A_BIST_ADDR[4]
++ A_ADDR[5] A_BIST_ADDR[5] A_ADDR[6] A_BIST_ADDR[6] A_ADDR[7] A_BIST_ADDR[7] A_ADDR[8]
++ A_BIST_ADDR[8] A_CLK A_REN A_WEN A_MEN A_DLY A_BIST_EN A_BIST_CLK A_BIST_REN A_BIST_WEN
++ A_BIST_MEN
+.ends
+
+* Black-box entry subcircuit for sg13cmos5l_antennanp abstract view
+.subckt sg13cmos5l_antennanp A VDD VSS
+.ends
+
+.subckt act_bank_container VDD VSS act_addr[0] act_addr[1] act_addr[2] act_addr[3]
++ act_addr[4] act_addr[5] act_addr[6] act_addr[7] act_addr[8] act_rdata_east[0] act_rdata_east[1]
++ act_rdata_east[2] act_rdata_east[3] act_rdata_east[4] act_rdata_east[5] act_rdata_east[6]
++ act_rdata_east[7] act_rdata_west[0] act_rdata_west[1] act_rdata_west[2] act_rdata_west[3]
++ act_rdata_west[4] act_rdata_west[5] act_rdata_west[6] act_rdata_west[7] act_wdata[0]
++ act_wdata[1] act_wdata[2] act_wdata[3] act_wdata[4] act_wdata[5] act_wdata[6] act_wdata[7]
++ act_we clk_i clk_o out_act_east[0] out_act_east[1] out_act_east[2] out_act_east[3]
++ out_act_east[4] out_act_east[5] out_act_east[6] out_act_east[7] out_act_west[0]
++ out_act_west[1] out_act_west[2] out_act_west[3] out_act_west[4] out_act_west[5]
++ out_act_west[6] out_act_west[7] weight_in_east[0] weight_in_east[1] weight_in_east[2]
++ weight_in_east[3] weight_in_east[4] weight_in_east[5] weight_in_east[6] weight_in_east[7]
++ weight_in_west[0] weight_in_west[1] weight_in_west[2] weight_in_west[3] weight_in_west[4]
++ weight_in_west[5] weight_in_west[6] weight_in_west[7] weight_shift_en_east weight_shift_en_west
++ xbar_sel_east[0] xbar_sel_east[1] xbar_sel_east[2] xbar_sel_east[3] xbar_sel_west[0]
++ xbar_sel_west[1] xbar_sel_west[2] xbar_sel_west[3]
+XFILLER_7_7 VDD VSS sg13cmos5l_decap_8
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_62 act_sram_inst.gen_ihp_512x8.u_sram_512x8_62/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_73 act_sram_inst.gen_ihp_512x8.u_sram_512x8_73/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_84 act_sram_inst.gen_ihp_512x8.u_sram_512x8_84/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_95 act_sram_inst.gen_ihp_512x8.u_sram_512x8/A_DLY
++ VDD VSS sg13cmos5l_tiehi
+XFILLER_0_35 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_198 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_176 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_165 VDD VSS sg13cmos5l_decap_8
+XFILLER_29_0 VDD VSS sg13cmos5l_fill_2
+XFILLER_22_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_455 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_241 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_285 VDD VSS sg13cmos5l_fill_2
+Xoutput20 act_rdata_east[1] _082_/A VDD VSS sg13cmos5l_buf_1
+Xoutput31 act_rdata_west[4] _085_/X VDD VSS sg13cmos5l_buf_1
+Xoutput42 out_act_west[6] _096_/X VDD VSS sg13cmos5l_buf_1
+Xoutput53 xbar_sel_east[0] _107_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_11_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_506 VDD VSS sg13cmos5l_decap_8
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_63 act_sram_inst.gen_ihp_512x8.u_sram_512x8_63/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_74 act_sram_inst.gen_ihp_512x8.u_sram_512x8_74/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_85 act_sram_inst.gen_ihp_512x8.u_sram_512x8_85/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_96 act_sram_inst.gen_ihp_512x8.u_sram_512x8/A_MEN
++ VDD VSS sg13cmos5l_tiehi
+XFILLER_0_14 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_111 VDD VSS sg13cmos5l_decap_8
+XFILLER_25_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_16_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_15_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_445 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_90 VDD VSS sg13cmos5l_fill_1
+XFILLER_0_231 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_275 VDD VSS sg13cmos5l_fill_2
+Xoutput21 act_rdata_east[2] _083_/A VDD VSS sg13cmos5l_buf_1
+Xoutput32 act_rdata_west[5] _086_/X VDD VSS sg13cmos5l_buf_1
+Xoutput43 out_act_west[7] _097_/X VDD VSS sg13cmos5l_buf_1
+Xoutput54 xbar_sel_east[1] _108_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_3_14 VDD VSS sg13cmos5l_decap_4
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_64 act_sram_inst.gen_ihp_512x8.u_sram_512x8_64/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_75 act_sram_inst.gen_ihp_512x8.u_sram_512x8_75/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_86 act_sram_inst.gen_ihp_512x8.u_sram_512x8_86/L_LO
++ VDD VSS sg13cmos5l_tielo
+XFILLER_2_326 VDD VSS sg13cmos5l_decap_8
+XFILLER_30_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_424 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_435 VDD VSS sg13cmos5l_fill_2
+XFILLER_6_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_221 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_265 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_298 VDD VSS sg13cmos5l_decap_8
+Xoutput22 act_rdata_east[3] _084_/A VDD VSS sg13cmos5l_buf_1
+Xoutput33 act_rdata_west[6] _087_/X VDD VSS sg13cmos5l_buf_1
+Xoutput44 weight_in_east[0] _098_/X VDD VSS sg13cmos5l_buf_1
+Xoutput55 xbar_sel_east[2] _109_/X VDD VSS sg13cmos5l_buf_1
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_65 act_sram_inst.gen_ihp_512x8.u_sram_512x8_65/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_76 act_sram_inst.gen_ihp_512x8.u_sram_512x8_76/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_87 act_sram_inst.gen_ihp_512x8.u_sram_512x8_87/L_HI
++ VDD VSS sg13cmos5l_tiehi
+XFILLER_5_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_305 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_393 VDD VSS sg13cmos5l_fill_1
+XFILLER_9_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_27_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_403 VDD VSS sg13cmos5l_decap_8
+XFILLER_20_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_211 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_255 VDD VSS sg13cmos5l_fill_2
+Xoutput23 act_rdata_east[4] _085_/A VDD VSS sg13cmos5l_buf_1
+Xoutput34 act_rdata_west[7] _088_/X VDD VSS sg13cmos5l_buf_1
+Xoutput45 weight_in_east[1] _099_/X VDD VSS sg13cmos5l_buf_1
+Xoutput56 xbar_sel_east[3] _110_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_12_14 VDD VSS sg13cmos5l_decap_4
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_66 act_sram_inst.gen_ihp_512x8.u_sram_512x8_66/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_77 act_sram_inst.gen_ihp_512x8.u_sram_512x8_77/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_88 act_sram_inst.gen_ihp_512x8.u_sram_512x8_88/L_HI
++ VDD VSS sg13cmos5l_tiehi
+XFILLER_1_383 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_372 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_158 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_125 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_28 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_180 VDD VSS sg13cmos5l_fill_1
+XFILLER_19_516 VDD VSS sg13cmos5l_decap_8
+X_110_ _110_/X xbar_sel_west[3] VDD VSS sg13cmos5l_buf_1
+XFILLER_30_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_0_426 VDD VSS sg13cmos5l_fill_1
+XFILLER_20_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_13_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_201 VDD VSS sg13cmos5l_decap_4
+XFILLER_15_14 VDD VSS sg13cmos5l_decap_4
+Xoutput24 act_rdata_east[5] _086_/A VDD VSS sg13cmos5l_buf_1
+Xoutput35 clk_o _089_/X VDD VSS sg13cmos5l_buf_1
+Xoutput46 weight_in_east[2] _100_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_0_245 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_521 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_510 VDD VSS sg13cmos5l_decap_8
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_67 act_sram_inst.gen_ihp_512x8.u_sram_512x8_67/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_78 act_sram_inst.gen_ihp_512x8.u_sram_512x8_78/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_89 act_sram_inst.gen_ihp_512x8.u_sram_512x8_89/L_HI
++ VDD VSS sg13cmos5l_tiehi
+XFILLER_1_362 VDD VSS sg13cmos5l_decap_4
+XFILLER_2_104 VDD VSS sg13cmos5l_decap_8
+XFILLER_23_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_33_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_192 VDD VSS sg13cmos5l_decap_8
+X_040_ _040_/Y _040_/A VDD VSS sg13cmos5l_inv_1
+XFILLER_18_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_72 VDD VSS sg13cmos5l_decap_8
+XFILLER_8_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_32_0 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_235 VDD VSS sg13cmos5l_fill_2
+Xoutput25 act_rdata_east[6] _087_/A VDD VSS sg13cmos5l_buf_1
+Xoutput36 out_act_west[0] _090_/X VDD VSS sg13cmos5l_buf_1
+Xoutput47 weight_in_east[3] _101_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_26_14 VDD VSS sg13cmos5l_decap_4
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_57 act_sram_inst.gen_ihp_512x8.u_sram_512x8_57/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_68 act_sram_inst.gen_ihp_512x8.u_sram_512x8_68/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_79 act_sram_inst.gen_ihp_512x8.u_sram_512x8_79/L_LO
++ VDD VSS sg13cmos5l_tielo
+XFILLER_2_319 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_341 VDD VSS sg13cmos5l_decap_8
+XFILLER_3_7 VDD VSS sg13cmos5l_decap_8
+X_099_ _099_/X weight_in_west[1] VDD VSS sg13cmos5l_buf_1
+XFILLER_0_417 VDD VSS sg13cmos5l_decap_8
+XFILLER_25_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_225 VDD VSS sg13cmos5l_fill_2
+Xoutput26 act_rdata_east[7] _088_/A VDD VSS sg13cmos5l_buf_1
+Xoutput37 out_act_west[1] _091_/X VDD VSS sg13cmos5l_buf_1
+Xoutput48 weight_in_east[4] _102_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_4_520 VDD VSS sg13cmos5l_fill_2
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_58 act_sram_inst.gen_ihp_512x8.u_sram_512x8_58/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_69 act_sram_inst.gen_ihp_512x8.u_sram_512x8_69/L_LO
++ VDD VSS sg13cmos5l_tielo
+XFILLER_33_522 VDD VSS sg13cmos5l_fill_1
+X_098_ _098_/X weight_in_west[0] VDD VSS sg13cmos5l_buf_1
+XFILLER_2_492 VDD VSS sg13cmos5l_decap_8
+XFILLER_18_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_215 VDD VSS sg13cmos5l_fill_2
+Xoutput27 act_rdata_west[0] _081_/X VDD VSS sg13cmos5l_buf_1
+Xoutput38 out_act_west[2] _092_/X VDD VSS sg13cmos5l_buf_1
+Xoutput49 weight_in_east[5] _103_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_11_7 VDD VSS sg13cmos5l_decap_8
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_59 act_sram_inst.gen_ihp_512x8.u_sram_512x8_59/L_LO
++ VDD VSS sg13cmos5l_tielo
+XFILLER_1_398 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_118 VDD VSS sg13cmos5l_decap_8
+XFILLER_27_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_173 VDD VSS sg13cmos5l_decap_8
+XFILLER_18_520 VDD VSS sg13cmos5l_fill_2
+X_097_ _097_/X out_act_east[7] VDD VSS sg13cmos5l_buf_1
+XFILLER_1_86 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_53 VDD VSS sg13cmos5l_fill_1
+XFILLER_1_42 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_205 VDD VSS sg13cmos5l_fill_2
+Xoutput28 act_rdata_west[1] _082_/X VDD VSS sg13cmos5l_buf_1
+Xoutput39 out_act_west[3] _093_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_4_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_30_0 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_503 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_366 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_355 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_322 VDD VSS sg13cmos5l_fill_1
+XFILLER_8_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_185 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_152 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_7 VDD VSS sg13cmos5l_decap_8
+X_096_ _096_/X out_act_east[6] VDD VSS sg13cmos5l_buf_1
+XFILLER_2_461 VDD VSS sg13cmos5l_decap_8
+XFILLER_21_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_65 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_21 VDD VSS sg13cmos5l_decap_8
+XFILLER_12_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_7_520 VDD VSS sg13cmos5l_fill_2
+Xoutput29 act_rdata_west[2] _083_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_23_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_389 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_334 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_312 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_301 VDD VSS sg13cmos5l_decap_8
+XFILLER_27_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_18_522 VDD VSS sg13cmos5l_fill_1
+X_095_ _095_/X out_act_east[5] VDD VSS sg13cmos5l_buf_1
+XFILLER_27_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_99 VDD VSS sg13cmos5l_decap_8
+Xoutput19 act_rdata_east[0] _081_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_30_2 VDD VSS sg13cmos5l_fill_1
+XFILLER_16_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_379 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_132 VDD VSS sg13cmos5l_decap_8
+X_094_ _094_/X out_act_east[4] VDD VSS sg13cmos5l_buf_1
+XFILLER_2_485 VDD VSS sg13cmos5l_decap_8
+XFILLER_7_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_2_293 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_517 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_199 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_166 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_111 VDD VSS sg13cmos5l_decap_8
+XFILLER_24_516 VDD VSS sg13cmos5l_decap_8
+X_093_ _093_/X out_act_east[3] VDD VSS sg13cmos5l_buf_1
+XFILLER_6_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_15_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_475 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_79 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_35 VDD VSS sg13cmos5l_decap_8
+Xinput1 input1/X act_addr[0] VDD VSS sg13cmos5l_buf_1
+XFILLER_21_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_348 VDD VSS sg13cmos5l_decap_8
+X_092_ _092_/X out_act_east[2] VDD VSS sg13cmos5l_buf_1
+XFILLER_2_454 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_432 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_421 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_58 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_14 VDD VSS sg13cmos5l_decap_8
+Xinput2 input2/X act_addr[1] VDD VSS sg13cmos5l_buf_1
+XFILLER_25_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_14_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_4_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_327 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_382 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_146 VDD VSS sg13cmos5l_fill_2
+X_091_ _091_/X out_act_east[1] VDD VSS sg13cmos5l_buf_1
+XFILLER_2_499 VDD VSS sg13cmos5l_decap_8
+Xinput3 input3/X act_addr[2] VDD VSS sg13cmos5l_buf_1
+XFILLER_2_241 VDD VSS sg13cmos5l_decap_4
+XFILLER_18_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_7_14 VDD VSS sg13cmos5l_decap_4
+X_109_ _109_/X xbar_sel_west[2] VDD VSS sg13cmos5l_buf_1
+XFILLER_0_361 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_125 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_191 VDD VSS sg13cmos5l_decap_4
+X_090_ _090_/X out_act_east[0] VDD VSS sg13cmos5l_buf_1
+XFILLER_2_445 VDD VSS sg13cmos5l_fill_1
+XFILLER_1_49 VDD VSS sg13cmos5l_decap_4
+Xinput4 input4/X act_addr[3] VDD VSS sg13cmos5l_buf_1
+XFILLER_10_14 VDD VSS sg13cmos5l_decap_4
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8 input14/X input13/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_79/L_LO
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_78/L_LO act_sram_inst.gen_ihp_512x8.u_sram_512x8_91/L_HI
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_90/L_HI act_sram_inst.gen_ihp_512x8.u_sram_512x8_70/L_LO
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_69/L_LO _085_/A _084_/A VSS VDD VDD input15/X
++ input12/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_80/L_LO act_sram_inst.gen_ihp_512x8.u_sram_512x8_77/L_LO
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_92/L_HI act_sram_inst.gen_ihp_512x8.u_sram_512x8_89/L_HI
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_71/L_LO act_sram_inst.gen_ihp_512x8.u_sram_512x8_68/L_LO
++ _086_/A _083_/A input16/X input11/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_81/L_LO
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_76/L_LO act_sram_inst.gen_ihp_512x8.u_sram_512x8_93/L_HI
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_88/L_HI act_sram_inst.gen_ihp_512x8.u_sram_512x8_72/L_LO
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_67/L_LO _087_/A _082_/A input17/X input10/X
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_82/L_LO act_sram_inst.gen_ihp_512x8.u_sram_512x8_75/L_LO
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_94/L_HI act_sram_inst.gen_ihp_512x8.u_sram_512x8_87/L_HI
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_73/L_LO act_sram_inst.gen_ihp_512x8.u_sram_512x8_66/L_LO
++ _088_/A _081_/A input1/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_57/L_LO input2/X
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_58/L_LO input3/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_59/L_LO
++ input4/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_60/L_LO input5/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_61/L_LO
++ input6/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_62/L_LO input7/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_63/L_LO
++ input8/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_64/L_LO input9/X act_sram_inst.gen_ihp_512x8.u_sram_512x8_65/L_LO
++ clk_i _040_/Y _040_/A act_sram_inst.gen_ihp_512x8.u_sram_512x8/A_MEN act_sram_inst.gen_ihp_512x8.u_sram_512x8/A_DLY
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_83/L_LO act_sram_inst.gen_ihp_512x8.u_sram_512x8_74/L_LO
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_85/L_LO act_sram_inst.gen_ihp_512x8.u_sram_512x8_86/L_LO
++ act_sram_inst.gen_ihp_512x8.u_sram_512x8_84/L_LO RM_IHPSG13_1P_512x8_c3_bm_bist
+XFILLER_4_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_286 VDD VSS sg13cmos5l_decap_8
+X_108_ _108_/X xbar_sel_west[1] VDD VSS sg13cmos5l_buf_1
+XFILLER_1_318 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_340 VDD VSS sg13cmos5l_decap_8
+XFILLER_13_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_8_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_159 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_181 VDD VSS sg13cmos5l_decap_4
+XFILLER_32_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_479 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_468 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_28 VDD VSS sg13cmos5l_decap_8
+XFILLER_14_520 VDD VSS sg13cmos5l_fill_2
+Xinput5 input5/X act_addr[4] VDD VSS sg13cmos5l_buf_1
+XFILLER_2_93 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_71 VDD VSS sg13cmos5l_decap_8
+XFILLER_23_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_16_14 VDD VSS sg13cmos5l_decap_4
+X_107_ _107_/X xbar_sel_west[0] VDD VSS sg13cmos5l_buf_1
+XFILLER_1_308 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_396 VDD VSS sg13cmos5l_decap_8
+XFILLER_12_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_171 VDD VSS sg13cmos5l_decap_4
+XFILLER_2_414 VDD VSS sg13cmos5l_decap_8
+XFILLER_24_14 VDD VSS sg13cmos5l_decap_4
+Xinput6 input6/X act_addr[5] VDD VSS sg13cmos5l_buf_1
+XFILLER_1_491 VDD VSS sg13cmos5l_fill_1
+XFILLER_19_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_16_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_501 VDD VSS sg13cmos5l_decap_8
+X_106_ _106_/X weight_shift_en_west VDD VSS sg13cmos5l_buf_1
+XFILLER_0_375 VDD VSS sg13cmos5l_decap_8
+XFILLER_27_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_139 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_106 VDD VSS sg13cmos5l_fill_1
+XFILLER_0_161 VDD VSS sg13cmos5l_decap_4
+XFILLER_32_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_14_522 VDD VSS sg13cmos5l_fill_1
+Xinput7 input7/X act_addr[6] VDD VSS sg13cmos5l_buf_1
+XFILLER_1_470 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_245 VDD VSS sg13cmos5l_fill_1
+XFILLER_2_212 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_0 VDD VSS sg13cmos5l_decap_8
+Xinput10 input10/X act_wdata[0] VDD VSS sg13cmos5l_buf_1
+X_105_ _105_/X weight_in_west[7] VDD VSS sg13cmos5l_buf_1
+XFILLER_0_354 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_118 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_151 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_195 VDD VSS sg13cmos5l_fill_2
+XFILLER_26_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_6_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_438 VDD VSS sg13cmos5l_decap_8
+Xinput8 input8/X act_addr[7] VDD VSS sg13cmos5l_buf_1
+Xinput11 input11/X act_wdata[1] VDD VSS sg13cmos5l_buf_1
+XFILLER_28_0 VDD VSS sg13cmos5l_fill_2
+X_104_ _104_/X weight_in_west[6] VDD VSS sg13cmos5l_buf_1
+XFILLER_21_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_333 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_141 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_185 VDD VSS sg13cmos5l_fill_2
+XFILLER_10_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_428 VDD VSS sg13cmos5l_decap_4
+Xinput9 input9/X act_addr[8] VDD VSS sg13cmos5l_buf_1
+XFILLER_11_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_20_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_64 VDD VSS sg13cmos5l_decap_8
+Xinput12 input12/X act_wdata[2] VDD VSS sg13cmos5l_buf_1
+XFILLER_0_515 VDD VSS sg13cmos5l_decap_8
+XFILLER_14_7 VDD VSS sg13cmos5l_decap_8
+X_103_ _103_/X weight_in_west[5] VDD VSS sg13cmos5l_buf_1
+XFILLER_0_312 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_389 VDD VSS sg13cmos5l_decap_8
+XFILLER_26_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_0_131 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_175 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_407 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_484 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_440 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_226 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_21 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_281 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_270 VDD VSS sg13cmos5l_decap_8
+Xinput13 input13/X act_wdata[3] VDD VSS sg13cmos5l_buf_1
+XFILLER_0_0 VDD VSS sg13cmos5l_decap_8
+X_102_ _102_/X weight_in_west[4] VDD VSS sg13cmos5l_buf_1
+XFILLER_33_0 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_368 VDD VSS sg13cmos5l_decap_8
+XFILLER_29_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_121 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_165 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_463 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_496 VDD VSS sg13cmos5l_decap_8
+XFILLER_4_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_205 VDD VSS sg13cmos5l_decap_8
+Xinput14 input14/X act_wdata[4] VDD VSS sg13cmos5l_buf_1
+X_101_ _101_/X weight_in_west[3] VDD VSS sg13cmos5l_buf_1
+XFILLER_26_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_347 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_111 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_155 VDD VSS sg13cmos5l_fill_2
+XFILLER_23_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_228 VDD VSS sg13cmos5l_fill_1
+XFILLER_2_78 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_294 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_250 VDD VSS sg13cmos5l_fill_2
+Xinput15 input15/X act_wdata[5] VDD VSS sg13cmos5l_buf_1
+X_100_ _100_/X weight_in_west[2] VDD VSS sg13cmos5l_buf_1
+XFILLER_0_326 VDD VSS sg13cmos5l_decap_8
+XFILLER_19_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_29_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_12_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_101 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_145 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_454 VDD VSS sg13cmos5l_decap_4
+XFILLER_10_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_57 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_46 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_35 VDD VSS sg13cmos5l_decap_8
+XFILLER_3_516 VDD VSS sg13cmos5l_decap_8
+Xinput16 input16/X act_wdata[6] VDD VSS sg13cmos5l_buf_1
+XFILLER_0_508 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_305 VDD VSS sg13cmos5l_decap_8
+XFILLER_31_0 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_135 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_477 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_433 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_219 VDD VSS sg13cmos5l_decap_8
+XFILLER_9_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_14 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_230 VDD VSS sg13cmos5l_decap_4
+XFILLER_2_7 VDD VSS sg13cmos5l_decap_8
+Xinput17 input17/X act_wdata[7] VDD VSS sg13cmos5l_buf_1
+X_089_ _089_/X clk_i VDD VSS sg13cmos5l_buf_1
+XFILLER_2_391 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_91 VDD VSS sg13cmos5l_decap_4
+XFILLER_24_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_125 VDD VSS sg13cmos5l_fill_2
+XFILLER_28_10 VDD VSS sg13cmos5l_decap_4
+XFILLER_17_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_412 VDD VSS sg13cmos5l_decap_8
+XFILLER_10_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_1_264 VDD VSS sg13cmos5l_fill_2
+Xinput18 _040_/A act_we VDD VSS sg13cmos5l_buf_1
+X_088_ _088_/X _088_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_8_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_2_381 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_81 VDD VSS sg13cmos5l_decap_4
+XFILLER_17_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_115 VDD VSS sg13cmos5l_fill_2
+XFILLER_10_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_31_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_6_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_287 VDD VSS sg13cmos5l_decap_8
+XFILLER_11_14 VDD VSS sg13cmos5l_decap_4
+X_087_ _087_/X _087_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_2_360 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_319 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_71 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_105 VDD VSS sg13cmos5l_fill_2
+XFILLER_14_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_458 VDD VSS sg13cmos5l_fill_1
+XFILLER_1_447 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_491 VDD VSS sg13cmos5l_decap_4
+XFILLER_2_28 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_277 VDD VSS sg13cmos5l_decap_4
+XFILLER_7_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_22_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_7 VDD VSS sg13cmos5l_decap_8
+X_086_ _086_/X _086_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_17_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_61 VDD VSS sg13cmos5l_decap_4
+XFILLER_31_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_22_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_426 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_481 VDD VSS sg13cmos5l_decap_4
+XFILLER_25_14 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_256 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_234 VDD VSS sg13cmos5l_fill_1
+XFILLER_1_223 VDD VSS sg13cmos5l_decap_8
+X_085_ _085_/X _085_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_2_340 VDD VSS sg13cmos5l_fill_1
+XFILLER_26_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_51 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_95 VDD VSS sg13cmos5l_fill_2
+XFILLER_15_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_9_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_405 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_471 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_246 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_213 VDD VSS sg13cmos5l_decap_4
+XFILLER_2_522 VDD VSS sg13cmos5l_fill_1
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_90 act_sram_inst.gen_ihp_512x8.u_sram_512x8_90/L_HI
++ VDD VSS sg13cmos5l_tiehi
+X_084_ _084_/X _084_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_2_385 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_374 VDD VSS sg13cmos5l_decap_8
+XFILLER_19_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_41 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_85 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_193 VDD VSS sg13cmos5l_fill_1
+XFILLER_1_428 VDD VSS sg13cmos5l_fill_1
+XFILLER_0_461 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_291 VDD VSS sg13cmos5l_decap_8
+XFILLER_5_520 VDD VSS sg13cmos5l_fill_2
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_80 act_sram_inst.gen_ihp_512x8.u_sram_512x8_80/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_91 act_sram_inst.gen_ihp_512x8.u_sram_512x8_91/L_HI
++ VDD VSS sg13cmos5l_tiehi
+X_083_ _083_/X _083_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_5_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_75 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_172 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_451 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_495 VDD VSS sg13cmos5l_fill_2
+XANTENNA_1 weight_in_west[0] VDD VSS sg13cmos5l_antennanp
+XFILLER_20_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_9_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_281 VDD VSS sg13cmos5l_decap_4
+XFILLER_2_513 VDD VSS sg13cmos5l_decap_8
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_70 act_sram_inst.gen_ihp_512x8.u_sram_512x8_70/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_81 act_sram_inst.gen_ihp_512x8.u_sram_512x8_81/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_92 act_sram_inst.gen_ihp_512x8.u_sram_512x8_92/L_HI
++ VDD VSS sg13cmos5l_tiehi
+X_082_ _082_/X _082_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_2_398 VDD VSS sg13cmos5l_fill_1
+XFILLER_28_520 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_21 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_65 VDD VSS sg13cmos5l_fill_2
+XFILLER_2_151 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_140 VDD VSS sg13cmos5l_decap_8
+XFILLER_24_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_1_419 VDD VSS sg13cmos5l_decap_8
+XANTENNA_2 weight_in_west[1] VDD VSS sg13cmos5l_antennanp
+XFILLER_0_441 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_485 VDD VSS sg13cmos5l_fill_2
+XFILLER_13_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_271 VDD VSS sg13cmos5l_decap_4
+Xoutput50 weight_in_east[6] _104_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_5_522 VDD VSS sg13cmos5l_fill_1
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_60 act_sram_inst.gen_ihp_512x8.u_sram_512x8_60/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_71 act_sram_inst.gen_ihp_512x8.u_sram_512x8_71/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_82 act_sram_inst.gen_ihp_512x8.u_sram_512x8_82/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_93 act_sram_inst.gen_ihp_512x8.u_sram_512x8_93/L_HI
++ VDD VSS sg13cmos5l_tiehi
+X_081_ _081_/X _081_/A VDD VSS sg13cmos5l_buf_1
+XFILLER_2_300 VDD VSS sg13cmos5l_fill_1
+XFILLER_2_333 VDD VSS sg13cmos5l_decap_8
+XFILLER_31_9 VDD VSS sg13cmos5l_fill_1
+XFILLER_17_7 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_55 VDD VSS sg13cmos5l_fill_2
+XFILLER_22_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_13_516 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_431 VDD VSS sg13cmos5l_decap_4
+XFILLER_0_475 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_239 VDD VSS sg13cmos5l_decap_4
+XFILLER_1_217 VDD VSS sg13cmos5l_fill_2
+XFILLER_1_206 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_261 VDD VSS sg13cmos5l_decap_4
+Xoutput40 out_act_west[4] _094_/X VDD VSS sg13cmos5l_buf_1
+Xoutput51 weight_in_east[7] _105_/X VDD VSS sg13cmos5l_buf_1
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_61 act_sram_inst.gen_ihp_512x8.u_sram_512x8_61/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_72 act_sram_inst.gen_ihp_512x8.u_sram_512x8_72/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_83 act_sram_inst.gen_ihp_512x8.u_sram_512x8_83/L_LO
++ VDD VSS sg13cmos5l_tielo
+Xact_sram_inst.gen_ihp_512x8.u_sram_512x8_94 act_sram_inst.gen_ihp_512x8.u_sram_512x8_94/L_HI
++ VDD VSS sg13cmos5l_tiehi
+XFILLER_2_367 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_345 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_312 VDD VSS sg13cmos5l_decap_8
+XFILLER_3_0 VDD VSS sg13cmos5l_decap_8
+XFILLER_2_186 VDD VSS sg13cmos5l_decap_8
+XFILLER_28_522 VDD VSS sg13cmos5l_fill_1
+XFILLER_0_45 VDD VSS sg13cmos5l_fill_2
+XFILLER_0_410 VDD VSS sg13cmos5l_decap_8
+XFILLER_0_465 VDD VSS sg13cmos5l_fill_2
+Xoutput30 act_rdata_west[3] _084_/X VDD VSS sg13cmos5l_buf_1
+Xoutput41 out_act_west[5] _095_/X VDD VSS sg13cmos5l_buf_1
+Xoutput52 weight_shift_en_east _106_/X VDD VSS sg13cmos5l_buf_1
+XFILLER_0_251 VDD VSS sg13cmos5l_decap_4
+.ends
+
