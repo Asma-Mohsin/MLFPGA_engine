@@ -57,6 +57,9 @@ PL_TARGET_DENSITY_PCT: 20
 VDD_NETS: [VDD]
 GND_NETS: [VSS]
 PDN_MULTILAYER: true
+PDN_CFG: dir::pdn_cfg.tcl
+GRT_ALLOW_CONGESTION: True
+DRT_OPT_ITERS: 1
 
 PDN_MACRO_CONNECTIONS:
   - "npu_inst\\.act_buffer_stage\\.gen_containers.*\\.container_inst.* VDD VSS VDD VSS"
@@ -91,29 +94,29 @@ MACROS:
         - dir::../ip/act_sram/final/lib/nom_slow_1p08V_125C/act_bank_container__nom_slow_1p08V_125C.lib
     instances:
       "npu_inst.act_buffer_stage.gen_containers[0].container_inst":
-        location: [2550, 100]
-        orientation: N
+        location: [2550, 300]
+        orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[1].container_inst":
-        location: [2550, 270]
-        orientation: N
+        location: [2550, 600]
+        orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[2].container_inst":
-        location: [2550, 440]
-        orientation: N
+        location: [2550, 900]
+        orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[3].container_inst":
-        location: [2550, 610]
-        orientation: N
+        location: [2550, 1200]
+        orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[4].container_inst":
-        location: [2550, 780]
-        orientation: N
+        location: [2550, 1500]
+        orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[5].container_inst":
-        location: [2550, 950]
-        orientation: N
+        location: [2550, 1800]
+        orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[6].container_inst":
-        location: [2550, 1120]
-        orientation: N
+        location: [2550, 2100]
+        orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[7].container_inst":
-        location: [2550, 1290]
-        orientation: N
+        location: [2550, 2400]
+        orientation: R270
 
   psum_requant_container:
     gds:
@@ -131,26 +134,26 @@ MACROS:
         - dir::../ip/psum_sram/final/lib/nom_slow_1p08V_125C/psum_requant_container__nom_slow_1p08V_125C.lib
     instances:
       "npu_inst.psum_requant_stage.gen_containers[0].container_inst":
-        location: [3134.24, 100]
-        orientation: N
+        location: [3114.24, 300]
+        orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[1].container_inst":
-        location: [3134.24, 650]
-        orientation: N
+        location: [3114.24, 780]
+        orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[2].container_inst":
-        location: [3134.24, 1200]
-        orientation: N
+        location: [3114.24, 1260]
+        orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[3].container_inst":
-        location: [3134.24, 1750]
-        orientation: N
+        location: [3114.24, 1740]
+        orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[4].container_inst":
-        location: [3134.24, 2300]
-        orientation: N
+        location: [3114.24, 2220]
+        orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[5].container_inst":
-        location: [3134.24, 2850]
-        orientation: N
+        location: [3114.24, 2700]
+        orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[6].container_inst":
-        location: [3134.24, 3400]
-        orientation: N
+        location: [3114.24, 3180]
+        orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[7].container_inst":
-        location: [3134.24, 3950]
-        orientation: N
+        location: [3114.24, 3660]
+        orientation: R0
