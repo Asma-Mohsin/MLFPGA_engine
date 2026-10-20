@@ -1,0 +1,156 @@
+meta:
+  version: 3
+  flow: Classic
+
+DESIGN_NAME: efpga_subsystem_top
+
+VERILOG_FILES:
+  - dir::../src/eFPGA_Subsystem/eFPGA_Subsystem_TOP/efpga_subsystem_top.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/axi_decoupler.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/axi_watchdog_master_monitor.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/axi_watchdog_slave_monitor.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/axil_decoupler.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/axil_watchdog_master_monitor.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/axil_watchdog_slave_monitor.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/bridge_fabric_master_to_soc.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/bridge_soc_to_fabric_slave.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/efpga_connector.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/efpga_manager.sv
+  - dir::../src/eFPGA_Subsystem/AXI_Connector/pmp_math.sv
+  - dir::../src/AXI_LIB/axi_register.v
+  - dir::../src/AXI_LIB/axi_register_rd.v
+  - dir::../src/AXI_LIB/axi_register_wr.v
+  - dir::../src/AXI_LIB/axil_register.v
+  - dir::../src/AXI_LIB/axil_register_rd.v
+  - dir::../src/AXI_LIB/axil_register_wr.v
+  - dir::../src/eFPGA_Subsystem/NPU_complex/NPU_complex_TOP/npu_wrapper.sv
+  - dir::../src/eFPGA_Subsystem/NPU_complex/act_buffer/act_buffer_TOP/act_buffer_top.sv
+  - dir::../src/eFPGA_Subsystem/NPU_complex/compute_core/compute_core_TOP/compute_core_top.sv
+  - dir::../src/eFPGA_Subsystem/NPU_complex/compute_core/crossbar/npu_crossbar.sv
+  - dir::../src/eFPGA_Subsystem/NPU_complex/compute_core/quant_config/quant_shift_chain.sv
+  - dir::../src/eFPGA_Subsystem/NPU_complex/shared/clock_gate/cg_cell.v
+  - dir::../src/eFPGA_Subsystem/NPU_complex/compute_core/systolic_array/pe.sv
+  - dir::../src/eFPGA_Subsystem/NPU_complex/compute_core/systolic_array/systolic_array.sv
+  - dir::../src/eFPGA_Subsystem/NPU_complex/psum_requant/psum_requant_TOP/psum_requant_top.sv
+  - dir::../ip/Fabric/OWAS_fabric/Fabric/ConfigFSM.v
+  - dir::../ip/Fabric/OWAS_fabric/Fabric/Frame_Data_Reg.v
+  - dir::../ip/Fabric/OWAS_fabric/Fabric/Frame_Select.v
+  - dir::../ip/Fabric/OWAS_fabric/Fabric/bitbang.v
+  - dir::../ip/Fabric/OWAS_fabric/Fabric/config_UART.v
+  - dir::../ip/Fabric/OWAS_fabric/Fabric/eFPGA_Config.v
+  - dir::../ip/Fabric/OWAS_fabric/Fabric/eFPGA_top.v
+  - dir::../ip/Fabric/OWAS_fabric/Fabric/models_pack.v
+
+USE_SLANG: true
+VERILOG_DEFINES: [LIBRELANE_HARD_MACROS, IHP_SG13CMOS5L]
+ERROR_ON_SYNTH_CHECKS: false
+
+CLOCK_PORT: clk_i
+CLOCK_NET: clk_i
+CLOCK_PERIOD: 10.0
+
+FP_SIZING: absolute
+# Reserve a left margin for the fabric; place ACT macros beside it and PSUM macros at the core's right edge.
+DIE_AREA: [0, 0, 3600, 4800]
+PL_TARGET_DENSITY_PCT: 20
+
+VDD_NETS: [VDD]
+GND_NETS: [VSS]
+PDN_MULTILAYER: true
+
+PDN_MACRO_CONNECTIONS:
+  - "npu_inst\\.act_buffer_stage\\.gen_containers.*\\.container_inst.* VDD VSS VDD VSS"
+  - "npu_inst\\.psum_requant_stage\\.gen_containers.*\\.container_inst.* VDD VSS VDD VSS"
+
+MACROS:
+  eFPGA:
+    gds:
+      - dir::../ip/Fabric/OWAS_fabric/Fabric/macro/final_views/gds/eFPGA.gds
+    lef:
+      - dir::../ip/Fabric/OWAS_fabric/Fabric/macro/final_views/lef/eFPGA.lef
+    nl:
+      - dir::../ip/Fabric/OWAS_fabric/Fabric/macro/final_views/nl/eFPGA.nl.v
+    instances:
+      "fabric_inst.eFPGA_inst":
+        location: [100, 100]
+        orientation: N
+
+  act_bank_container:
+    gds:
+      - dir::../ip/act_sram/final/gds/act_bank_container.gds
+    lef:
+      - dir::../ip/act_sram/final/lef/act_bank_container.lef
+    nl:
+      - dir::../ip/act_sram/final/nl/act_bank_container.nl.v
+    lib:
+      "*_typ_1p20V_25C":
+        - dir::../ip/act_sram/final/lib/nom_typ_1p20V_25C/act_bank_container__nom_typ_1p20V_25C.lib
+      "nom_fast_1p32V_m40C":
+        - dir::../ip/act_sram/final/lib/nom_fast_1p32V_m40C/act_bank_container__nom_fast_1p32V_m40C.lib
+      "nom_slow_1p08V_125C":
+        - dir::../ip/act_sram/final/lib/nom_slow_1p08V_125C/act_bank_container__nom_slow_1p08V_125C.lib
+    instances:
+      "npu_inst.act_buffer_stage.gen_containers[0].container_inst":
+        location: [2550, 100]
+        orientation: N
+      "npu_inst.act_buffer_stage.gen_containers[1].container_inst":
+        location: [2550, 270]
+        orientation: N
+      "npu_inst.act_buffer_stage.gen_containers[2].container_inst":
+        location: [2550, 440]
+        orientation: N
+      "npu_inst.act_buffer_stage.gen_containers[3].container_inst":
+        location: [2550, 610]
+        orientation: N
+      "npu_inst.act_buffer_stage.gen_containers[4].container_inst":
+        location: [2550, 780]
+        orientation: N
+      "npu_inst.act_buffer_stage.gen_containers[5].container_inst":
+        location: [2550, 950]
+        orientation: N
+      "npu_inst.act_buffer_stage.gen_containers[6].container_inst":
+        location: [2550, 1120]
+        orientation: N
+      "npu_inst.act_buffer_stage.gen_containers[7].container_inst":
+        location: [2550, 1290]
+        orientation: N
+
+  psum_requant_container:
+    gds:
+      - dir::../ip/psum_sram/final/gds/psum_requant_container.gds
+    lef:
+      - dir::../ip/psum_sram/final/lef/psum_requant_container.lef
+    nl:
+      - dir::../ip/psum_sram/final/nl/psum_requant_container.nl.v
+    lib:
+      "*_typ_1p20V_25C":
+        - dir::../ip/psum_sram/final/lib/nom_typ_1p20V_25C/psum_requant_container__nom_typ_1p20V_25C.lib
+      "nom_fast_1p32V_m40C":
+        - dir::../ip/psum_sram/final/lib/nom_fast_1p32V_m40C/psum_requant_container__nom_fast_1p32V_m40C.lib
+      "nom_slow_1p08V_125C":
+        - dir::../ip/psum_sram/final/lib/nom_slow_1p08V_125C/psum_requant_container__nom_slow_1p08V_125C.lib
+    instances:
+      "npu_inst.psum_requant_stage.gen_containers[0].container_inst":
+        location: [3134.24, 100]
+        orientation: N
+      "npu_inst.psum_requant_stage.gen_containers[1].container_inst":
+        location: [3134.24, 650]
+        orientation: N
+      "npu_inst.psum_requant_stage.gen_containers[2].container_inst":
+        location: [3134.24, 1200]
+        orientation: N
+      "npu_inst.psum_requant_stage.gen_containers[3].container_inst":
+        location: [3134.24, 1750]
+        orientation: N
+      "npu_inst.psum_requant_stage.gen_containers[4].container_inst":
+        location: [3134.24, 2300]
+        orientation: N
+      "npu_inst.psum_requant_stage.gen_containers[5].container_inst":
+        location: [3134.24, 2850]
+        orientation: N
+      "npu_inst.psum_requant_stage.gen_containers[6].container_inst":
+        location: [3134.24, 3400]
+        orientation: N
+      "npu_inst.psum_requant_stage.gen_containers[7].container_inst":
+        location: [3134.24, 3950]
+        orientation: N
