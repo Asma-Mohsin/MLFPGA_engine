@@ -10,7 +10,7 @@ module npu_wrapper #(
     parameter int PSUM_WIDTH       = 32,
     parameter int SCALE_WIDTH      = 16,
     parameter int WEIGHT_SPLIT     = 8,
-    parameter int USE_LADDER_CLOCKS = 0,
+    parameter int USE_LADDER_CLOCKS = 1,
 
     localparam int PSUM_WORDS       = TILE_SIZE * TILE_SIZE,
     localparam int ACT_WORDS        = (TILE_SIZE * TILE_SIZE) * ACT_HALO_PAD,

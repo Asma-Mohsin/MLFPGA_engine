@@ -50,9 +50,13 @@ CLOCK_NET: clk_i
 CLOCK_PERIOD: 10.0
 
 FP_SIZING: absolute
-# Reserve a left margin for the fabric; place ACT macros beside it and PSUM macros at the core's right edge.
-DIE_AREA: [0, 0, 3600, 4800]
+# Shift the macro layout right by 200 um and widen the die to preserve the PSUM column's right-edge position.
+DIE_AREA: [0, 0, 3800, 4800]
 PL_TARGET_DENSITY_PCT: 20
+FP_OBSTRUCTIONS:
+  - [3774.24, 15.12, 3794.24, 4784.88]
+  - [300, 15.12, 2647.68, 100]
+  - [300, 4629.7, 2647.68, 4784.88]
 
 VDD_NETS: [VDD]
 GND_NETS: [VSS]
@@ -60,7 +64,8 @@ PDN_MULTILAYER: true
 PDN_CFG: dir::pdn_cfg.tcl
 GRT_ALLOW_CONGESTION: True
 DRT_OPT_ITERS: 1
-
+GRT_OVERFLOW_ITERS: 1
+DRT_ANTENNA_REPAIR_ITERS: 0
 PDN_MACRO_CONNECTIONS:
   - "npu_inst\\.act_buffer_stage\\.gen_containers.*\\.container_inst.* VDD VSS VDD VSS"
   - "npu_inst\\.psum_requant_stage\\.gen_containers.*\\.container_inst.* VDD VSS VDD VSS"
@@ -75,7 +80,7 @@ MACROS:
       - dir::../ip/Fabric/OWAS_fabric/Fabric/macro/final_views/nl/eFPGA.nl.v
     instances:
       "fabric_inst.eFPGA_inst":
-        location: [100, 100]
+        location: [300, 100]
         orientation: N
 
   act_bank_container:
@@ -94,28 +99,28 @@ MACROS:
         - dir::../ip/act_sram/final/lib/nom_slow_1p08V_125C/act_bank_container__nom_slow_1p08V_125C.lib
     instances:
       "npu_inst.act_buffer_stage.gen_containers[0].container_inst":
-        location: [2550, 300]
+        location: [2647.68, 252.58]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[1].container_inst":
-        location: [2550, 600]
+        location: [2647.68, 796.9]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[2].container_inst":
-        location: [2550, 900]
+        location: [2647.68, 1341.22]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[3].container_inst":
-        location: [2550, 1200]
+        location: [2647.68, 1885.54]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[4].container_inst":
-        location: [2550, 1500]
+        location: [2647.68, 2429.86]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[5].container_inst":
-        location: [2550, 1800]
+        location: [2647.68, 2974.18]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[6].container_inst":
-        location: [2550, 2100]
+        location: [2647.68, 3518.5]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[7].container_inst":
-        location: [2550, 2400]
+        location: [2647.68, 4062.82]
         orientation: R270
 
   psum_requant_container:
@@ -134,26 +139,26 @@ MACROS:
         - dir::../ip/psum_sram/final/lib/nom_slow_1p08V_125C/psum_requant_container__nom_slow_1p08V_125C.lib
     instances:
       "npu_inst.psum_requant_stage.gen_containers[0].container_inst":
-        location: [3114.24, 300]
+        location: [3314.24, 300]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[1].container_inst":
-        location: [3114.24, 780]
+        location: [3314.24, 780]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[2].container_inst":
-        location: [3114.24, 1260]
+        location: [3314.24, 1260]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[3].container_inst":
-        location: [3114.24, 1740]
+        location: [3314.24, 1740]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[4].container_inst":
-        location: [3114.24, 2220]
+        location: [3314.24, 2220]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[5].container_inst":
-        location: [3114.24, 2700]
+        location: [3314.24, 2700]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[6].container_inst":
-        location: [3114.24, 3180]
+        location: [3314.24, 3180]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[7].container_inst":
-        location: [3114.24, 3660]
+        location: [3314.24, 3660]
         orientation: R0
