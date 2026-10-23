@@ -4,12 +4,16 @@ module efpga_subsystem_top #(
     parameter int NUM_SLOTS        = 1,
     parameter int AXI_ID_WIDTH     = 8,
     parameter logic [31:0] HW_VERSION = 32'hFAB00001,
-    parameter int WEIGHT_SPLIT     = 8
+    parameter int WEIGHT_SPLIT      = 8,
+    parameter int USE_LADDER_CLOCKS = target_config_pkg::TARGET_USE_LADDER_CLOCKS
 ) (
-    // Global Clock & Synchronized System Resets (from Top Level)
+    // Global Clock & eFPGA Subsystem Reset Domain Inputs (from Top-Level Reset Controller)
     input  logic                                clk_i,
-    input  logic                                rstn_i,      // Synchronized Active-Low Reset
-    input  logic                                rst_i,       // Synchronized Active-High Reset
+    input  logic                                rst_efpga_connector_n_i, // Active-Low Reset for eFPGA AXI Connector (Manager, Decouplers, Watchdogs, Bridges)
+    input  logic                                rst_efpga_connector_i,   // Active-High Reset for eFPGA AXI Register Slices (Forencich IP)
+    input  logic                                rst_efpga_fabric_n_i,    // Active-Low Configuration FSM Reset for eFPGA Fabric
+    input  logic [NUM_SLOTS-1:0][3:0]           rst_efpga_slot_n_i,      // Active-Low Soft Resets for eFPGA User Softlogic Slots (4 per slot)
+    input  logic [NUM_SLOTS-1:0]                rst_efpga_npu_n_i,       // Active-Low Reset for Hardened NPU Complex
 
     // =========================================================================
     // AXI4-Lite Slave: Global Manager Interface
@@ -138,20 +142,27 @@ module efpga_subsystem_top #(
 
     logic [31:0]                        efpga_config_data;
     logic                               efpga_config_we;
-    logic [NUM_SLOTS-1:0][3:0]          slot_fabric_rst_n;
-    logic [NUM_SLOTS-1:0]               slot_npu_rst_n;
     logic                               efpga_com_active;
     logic [NUM_SLOTS-1:0][31:0]         slot_debug_in;
     logic [NUM_SLOTS-1:0][31:0]         slot_debug_out;
+    logic [NUM_SLOTS-1:0][3:0]          slot_usr_irq_raw;
+    logic [NUM_SLOTS-1:0][3:0]          slot_usr_irq_gated;
+    logic [NUM_SLOTS-1:0]               slot_pmod_en;
+    logic [7:0]                         raw_pmod_io_o;
+    logic [7:0]                         raw_pmod_io_oe;
     logic [NUM_SLOTS*3-1:0]             slot_dma_awprot;
     logic [NUM_SLOTS*3-1:0]             slot_dma_arprot;
+
+    assign efpga_usr_irq_o = slot_usr_irq_gated[0];
+    assign pmod_io_o       = slot_pmod_en[0] ? raw_pmod_io_o  : 8'h00;
+    assign pmod_io_oe_o    = slot_pmod_en[0] ? raw_pmod_io_oe : 8'h00;
 
     // =========================================================================
     // External BitBang Configuration Clock Snooper (4-bit Glitch Filter)
     // =========================================================================
     logic [2:0] sclk_sync;
-    always_ff @(posedge clk_i or negedge rstn_i) begin
-        if (!rstn_i) begin
+    always_ff @(posedge clk_i or negedge rst_efpga_connector_n_i) begin
+        if (!rst_efpga_connector_n_i) begin
             sclk_sync <= 3'b000;
         end else begin
             sclk_sync <= {sclk_sync[1:0], efpga_cfg_sclk_i};
@@ -161,10 +172,8 @@ module efpga_subsystem_top #(
 
     // 4-bit saturating edge filter: confirms 16 transitions on s_clk to reject glitches
     logic [3:0] bb_edge_cnt;
-    always_ff @(posedge clk_i or negedge rstn_i) begin
-        if (!rstn_i) begin
-            bb_edge_cnt <= 4'd0;
-        end else if (!slot_fabric_rst_n[0][0]) begin
+    always_ff @(posedge clk_i or negedge rst_efpga_connector_n_i) begin
+        if (!rst_efpga_connector_n_i) begin
             bb_edge_cnt <= 4'd0;
         end else if (sclk_edge && (bb_edge_cnt != 4'd15)) begin
             bb_edge_cnt <= bb_edge_cnt + 4'd1;
@@ -182,8 +191,8 @@ module efpga_subsystem_top #(
         .HW_VERSION(HW_VERSION)
     ) efpga_connector_inst (
         .clk_i               (clk_i),
-        .rstn_i              (rstn_i),
-        .rst_i               (rst_i),
+        .rstn_i              (rst_efpga_connector_n_i),
+        .rst_i               (rst_efpga_connector_i),
 
         // Global Manager Interface
         .mgr_s_awaddr        (s_axil_mgr_awaddr),
@@ -325,12 +334,13 @@ module efpga_subsystem_top #(
         // eFPGA Global Management Signals
         .efpga_config_data_o (efpga_config_data),
         .efpga_config_we_o   (efpga_config_we),
-        .slot_fabric_rst_n_o (slot_fabric_rst_n),
-        .slot_npu_rst_n_o    (slot_npu_rst_n),
         .efpga_com_active_i  (efpga_com_active),
         .efpga_bitbang_active_i (bitbang_active),
         .slot_debug_in_i     (slot_debug_in),
         .slot_debug_out_o    (slot_debug_out),
+        .slot_usr_irq_i      (slot_usr_irq_raw),
+        .slot_usr_irq_o      (slot_usr_irq_gated),
+        .slot_pmod_en_o      (slot_pmod_en),
         .slot_dma_awprot_o   (slot_dma_awprot),
         .slot_dma_arprot_o   (slot_dma_arprot),
         .fault_irq_o         (efpga_fault_irq_o)
@@ -340,6 +350,7 @@ module efpga_subsystem_top #(
     // Direct eFPGA Fabric & Hardened NPU Complex Interconnect
     // =========================================================================
     // Interconnect Buses (eFPGA Fabric <-> NPU Complex)
+    wire        [7:0]  npu_act_clk;
     wire        [71:0] npu_act_addr;
     wire        [63:0] npu_act_rdata;
     wire        [63:0] npu_act_wdata;
@@ -369,24 +380,12 @@ module efpga_subsystem_top #(
     assign axi4_dma_s_awprot = slot_dma_awprot;
     assign axi4_dma_s_arprot = slot_dma_arprot;
 
-`ifdef __ICARUS__
-    `ifndef EXCLUDE_FPGA
-        `define EXCLUDE_FPGA
-    `endif
-`endif
-`ifdef EXCLUDE_EFPGA
-    `ifndef EXCLUDE_FPGA
-        `define EXCLUDE_FPGA
-    `endif
-`endif
-
-`ifndef EXCLUDE_FPGA
     // -------------------------------------------------------------------------
     // FABulous eFPGA Soft-Fabric Top
     // -------------------------------------------------------------------------
     eFPGA_top fabric_inst (
         .CLK                 (clk_i),
-        .resetn              (rstn_i),
+        .resetn              (rst_efpga_fabric_n_i),
 
         // Bitstream Configuration
         .SelfWriteData       (efpga_config_data),
@@ -452,13 +451,14 @@ module efpga_subsystem_top #(
         // Debug & Slot Control
         .DEBUG_IN            (slot_debug_in[0]),
         .DEBUG_OUT           (slot_debug_out[0]),
-        .SLOT_SOFT_RST_N     (slot_fabric_rst_n[0]),
-        .USR_IRQ             (efpga_usr_irq_o),
+        .FAB_USER_CLK        (npu_act_clk),
+        .SLOT_SOFT_RST_N     (rst_efpga_slot_n_i[0]),
+        .USR_IRQ             (slot_usr_irq_raw[0]),
 
         // External PMOD Padring
         .PMOD_IO_I           (pmod_io_i),
-        .PMOD_IO_O           (pmod_io_o),
-        .PMOD_IO_OE_O        (pmod_io_oe_o),
+        .PMOD_IO_O           (raw_pmod_io_o),
+        .PMOD_IO_OE_O        (raw_pmod_io_oe),
 
         // Dedicated NPU Complex Interconnect
         .NPU_ARRAY_EN        (npu_array_en),
@@ -498,10 +498,12 @@ module efpga_subsystem_top #(
         .WEIGHT_WIDTH        (8),
         .PSUM_WIDTH          (32),
         .SCALE_WIDTH         (16),
-        .WEIGHT_SPLIT        (WEIGHT_SPLIT)
+        .WEIGHT_SPLIT        (WEIGHT_SPLIT),
+        .USE_LADDER_CLOCKS   (USE_LADDER_CLOCKS)
     ) npu_inst (
         .clk_i               (clk_i),
-        .rst_n               (slot_npu_rst_n[0]),
+        .act_clk_i           (npu_act_clk),
+        .rst_n               (rst_efpga_npu_n_i[0]),
 
         .crossbar_sel        (npu_xbar_sel),
 
@@ -541,6 +543,7 @@ module efpga_subsystem_top #(
     generate
         if (NUM_SLOTS > 1) begin : gen_extra_slots
             assign slot_debug_in[NUM_SLOTS-1:1]         = slot_debug_out[NUM_SLOTS-1:1];
+            assign slot_usr_irq_raw[NUM_SLOTS-1:1]      = '0;
             assign axil_ctrl_m_awready[NUM_SLOTS-1:1]   = '1;
             assign axil_ctrl_m_wready[NUM_SLOTS-1:1]    = '1;
             assign axil_ctrl_m_bresp[NUM_SLOTS*2-1:2]   = '0;
@@ -561,63 +564,5 @@ module efpga_subsystem_top #(
             assign axi4_dma_s_rvalid[NUM_SLOTS-1:1]     = '0;
         end
     endgenerate
-
-`else // Simulation Bypass when EXCLUDE_FPGA is defined
-    assign axil_ctrl_m_awready = {NUM_SLOTS{1'b1}};
-    assign axil_ctrl_m_wready  = {NUM_SLOTS{1'b1}};
-    assign axil_ctrl_m_bresp   = '0;
-    assign axil_ctrl_m_bvalid  = axil_ctrl_m_wvalid & axil_ctrl_m_awvalid;
-    assign axil_ctrl_m_arready = {NUM_SLOTS{1'b1}};
-    assign axil_ctrl_m_rdata   = 32'hDEADBEEF;
-    assign axil_ctrl_m_rresp   = '0;
-    assign axil_ctrl_m_rvalid  = axil_ctrl_m_arvalid;
-
-    assign axi4_dma_s_awaddr   = '0;
-    assign axi4_dma_s_awlen    = '0;
-    assign axi4_dma_s_awsize   = '0;
-    assign axi4_dma_s_awburst  = '0;
-    assign axi4_dma_s_awlock   = '0;
-    assign axi4_dma_s_awcache  = '0;
-    assign axi4_dma_s_awvalid  = '0;
-    assign axi4_dma_s_wdata    = '0;
-    assign axi4_dma_s_wstrb    = '0;
-    assign axi4_dma_s_wlast    = '0;
-    assign axi4_dma_s_wvalid   = '0;
-    assign axi4_dma_s_bready   = '0;
-    assign axi4_dma_s_araddr   = '0;
-    assign axi4_dma_s_arlen    = '0;
-    assign axi4_dma_s_arsize   = '0;
-    assign axi4_dma_s_arburst  = '0;
-    assign axi4_dma_s_arlock   = '0;
-    assign axi4_dma_s_arcache  = '0;
-    assign axi4_dma_s_arvalid  = '0;
-    assign axi4_dma_s_rready   = '0;
-
-    assign efpga_com_active    = 1'b0;
-    assign slot_debug_in       = slot_debug_out;
-
-    assign pmod_io_o           = '0;
-    assign pmod_io_oe_o        = '0;
-    assign efpga_usr_irq_o     = '0;
-
-    assign npu_act_addr        = '0;
-    assign npu_act_wdata       = '0;
-    assign npu_act_we          = '0;
-    assign npu_addr            = '0;
-    assign npu_wdata           = '0;
-    assign npu_we              = '0;
-    assign npu_read_bank_sel   = '0;
-    assign npu_weight_in       = '0;
-    assign npu_array_en        = '0;
-    assign npu_psum_systolic_en= '0;
-    assign npu_psum_lut_en     = '0;
-    assign npu_swap_weights    = '0;
-    assign npu_psum_skew_en    = '0;
-    assign npu_compute_bank_swap = '0;
-    assign npu_quant_shift_in  = '0;
-    assign npu_quant_shift_en  = '0;
-    assign npu_xbar_sel        = '0;
-    assign npu_weight_shift_en = '0;
-`endif
 
 endmodule

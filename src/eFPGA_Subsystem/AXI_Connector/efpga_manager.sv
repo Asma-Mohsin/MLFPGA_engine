@@ -10,7 +10,7 @@
  * Offset | Register Name  | R/W | Description / Bit Mapping
  * -------|----------------|-----|----------------------------------------------------------------
  * 0x000  | HW_VERSION     | R   | [31:0]: Hardware Version ID (Returns HW_VERSION parameter)
- * 0x004  | GLOBAL_CTRL    | R/W | [4]: BitBang Programmed (W1C) | [3]: BitBang Active (R) | [2]: User Design Loaded (R/W) | [1]: Com Active (R) | [0]: Soft Reset (R/W)
+ * 0x004  | GLOBAL_CTRL    | R/W | [4]: BitBang Programmed (W1C) | [3]: BitBang Active (R) | [2]: User Design Loaded (R/W) | [1]: Com Active (R) | [0]: Reserved (Legacy Soft Reset, reads 0)
  * 0x008  | CONFIG_DATA    | W   | [31:0]: Config Payload (translates little-endian CPU words to big-endian fabric frames)
  * 0x00C  | CONFIG_COUNT   | R   | [31:0]: Number of words written to CONFIG_DATA
  *
@@ -18,8 +18,8 @@
  * -----------------------------------------------------------------------------------------------
  * Offset | Register Name  | R/W | Description / Bit Mapping
  * -------|----------------|-----|----------------------------------------------------------------
- * 0x000  | SLOT_RESET     | R/W | [25:24]: Bridge DMA/Ctrl Rst | [16]: Wdog Rst | [4]: NPU Rst | [3:0]: Fabric Soft Rst
- * 0x004  | SLOT_CTRL      | R/W | [25:24]: WB M/S En | [19:16]: Wdog Mod En [CM, DS, CS, DM] | [15:13]: DMA ARPROT | [12:10]: DMA AWPROT | [8]: PMP En | [1:0]: Decouple Frc/Req
+ * 0x000  | SLOT_RESET     | R/W | Reserved / Vacant (Legacy Slot Soft Reset — handled by Top-Level Reset Controller; writes ignored, reads 0)
+ * 0x004  | SLOT_CTRL      | R/W | [25:24]: WB M/S En | [19:16]: Wdog Mod En [CM, DS, CS, DM] | [15:13]: DMA ARPROT | [12:10]: DMA AWPROT | [8]: PMP En | [3]: PMOD En | [2]: Usr IRQ En | [1:0]: Decouple Frc/Req
  * 0x008  | SLOT_STATUS    | R   | [20:16]: Wdog Faults [SoC, C-TO, C-PR, D-TO, D-PR] | [9:8]: PMP W/R Faults | [2:0]: Act/Dec Status
  * 0x00C  | FAULT_CLEAR    | W   | [20:16]: Clear Wdogs [SoC, C-TO, C-PR, D-TO, D-PR] | [9:8]: Clear PMP W/R
  * 0x010  | DEBUG_OUT      | R/W | [31:0]: Static output wires driven to the eFPGA fabric
@@ -68,13 +68,15 @@ module efpga_manager #(
     // Per-Slot Control Arrays
     input  logic [NUM_SLOTS-1:0][31:0] slot_debug_in_i,
     output logic [NUM_SLOTS-1:0][31:0] slot_debug_out_o,
-    output logic [NUM_SLOTS-1:0][31:0] slot_reset_o,
     
     output logic [NUM_SLOTS-1:0]       decoupler_req_o,
     output logic [NUM_SLOTS-1:0]       decoupler_force_o,
     input  logic [NUM_SLOTS-1:0]       decoupler_is_decoupled_i,
     input  logic [NUM_SLOTS-1:0]       decoupler_host_act_i,
     input  logic [NUM_SLOTS-1:0]       decoupler_dma_act_i,
+
+    output logic [NUM_SLOTS-1:0]       slot_usr_irq_en_o,
+    output logic [NUM_SLOTS-1:0]       slot_pmod_en_o,
 
     input  logic [NUM_SLOTS-1:0]       slot_pmp_r_violation_i,
     input  logic [NUM_SLOTS-1:0]       slot_pmp_w_violation_i,
@@ -129,17 +131,15 @@ module efpga_manager #(
     logic bitbang_active_q, bitbang_sticky_reg; 
     
     // Per-Slot Trimmed Registers
-    logic [NUM_SLOTS-1:0][3:0]  slot_reset_fabric_reg;
-    logic [NUM_SLOTS-1:0]       slot_reset_npu_reg;
-    logic [NUM_SLOTS-1:0]       slot_reset_wdog_reg;
-    logic [NUM_SLOTS-1:0]       slot_reset_bridge_ctrl_reg;
-    logic [NUM_SLOTS-1:0]       slot_reset_bridge_dma_reg;
     logic [NUM_SLOTS-1:0]       dec_req_reg, dec_force_reg;
+    logic [NUM_SLOTS-1:0]       usr_irq_en_reg, pmod_en_reg;
     logic [NUM_SLOTS-1:0][31:0] slot_debug_out_reg;
     logic [NUM_SLOTS-1:0][2:0]  dma_awprot_reg, dma_arprot_reg;
 
     assign slot_debug_out_o   = slot_debug_out_reg;
     assign decoupler_req_o    = dec_req_reg;
+    assign slot_usr_irq_en_o  = usr_irq_en_reg;
+    assign slot_pmod_en_o     = pmod_en_reg;
     assign slot_dma_awprot_o  = dma_awprot_reg;
     assign slot_dma_arprot_o  = dma_arprot_reg;
 
@@ -293,13 +293,13 @@ module efpga_manager #(
                     for (int j = 0; j < NUM_SLOTS; j++) begin
                         if (raw_dm_pr[j]) begin
                             wdog_dm_pr_reg[j] <= 1'b1;
-                        end else if (slot_reset_wdog_reg[j] || (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[16])) begin
+                        end else if (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[16]) begin
                             wdog_dm_pr_reg[j] <= 1'b0;
                         end
 
                         if (raw_dm_to[j]) begin
                             wdog_dm_to_reg[j] <= 1'b1;
-                        end else if (slot_reset_wdog_reg[j] || (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[17])) begin
+                        end else if (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[17]) begin
                             wdog_dm_to_reg[j] <= 1'b0;
                         end
                     end
@@ -340,13 +340,13 @@ module efpga_manager #(
                     for (int j = 0; j < NUM_SLOTS; j++) begin
                         if (raw_cs_pr[j]) begin
                             wdog_cs_pr_reg[j] <= 1'b1;
-                        end else if (slot_reset_wdog_reg[j] || (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[18])) begin
+                        end else if (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[18]) begin
                             wdog_cs_pr_reg[j] <= 1'b0;
                         end
 
                         if (raw_cs_to[j]) begin
                             wdog_cs_to_reg[j] <= 1'b1;
-                        end else if (slot_reset_wdog_reg[j] || (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[19])) begin
+                        end else if (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[19]) begin
                             wdog_cs_to_reg[j] <= 1'b0;
                         end
                     end
@@ -417,7 +417,7 @@ module efpga_manager #(
                     for (int j = 0; j < NUM_SLOTS; j++) begin
                         if (raw_soc[j]) begin
                             wdog_soc_reg[j] <= 1'b1;
-                        end else if (slot_reset_wdog_reg[j] || (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[20])) begin
+                        end else if (is_slot_write && (aw_slot_sel == SLOT_IDX_W'(j)) && (slot_aw_offset == 12'h00C) && s_axil_wstrb[2] && s_axil_wdata[20]) begin
                             wdog_soc_reg[j] <= 1'b0;
                         end
                     end
@@ -474,20 +474,9 @@ module efpga_manager #(
     endgenerate
 
     // =========================================================================
-    // PER-SLOT OUTPUT AGGREGATION (Resets, Decoupler Force, Fault IRQ)
+    // PER-SLOT OUTPUT AGGREGATION (Decoupler Force, Fault IRQ)
     // =========================================================================
     for (genvar i = 0; i < NUM_SLOTS; i++) begin : gen_slot_outputs
-        assign slot_reset_o[i] = {
-            6'd0,
-            slot_reset_bridge_dma_reg[i],
-            slot_reset_bridge_ctrl_reg[i],
-            7'd0,
-            slot_reset_wdog_reg[i],
-            11'd0,
-            slot_reset_npu_reg[i],
-            slot_reset_fabric_reg[i]
-        };
-
         assign decoupler_force_o[i] = dec_force_reg[i] | 
                                       raw_dm_pr[i] | raw_dm_to[i] | raw_cs_pr[i] | raw_cs_to[i] | raw_soc[i] |
                                       wdog_dm_pr_wire[i] | wdog_dm_to_wire[i] | wdog_cs_pr_wire[i] | wdog_cs_to_wire[i] | wdog_soc_wire[i] |
@@ -514,13 +503,10 @@ module efpga_manager #(
             com_active_q               <= 1'b0;
             bitbang_active_q           <= 1'b0;
             bitbang_sticky_reg         <= 1'b0;
-            slot_reset_fabric_reg      <= '0;
-            slot_reset_npu_reg         <= '0;
-            slot_reset_wdog_reg        <= '0;
-            slot_reset_bridge_ctrl_reg <= '0;
-            slot_reset_bridge_dma_reg  <= '0;
             dec_req_reg                <= '1;
             dec_force_reg              <= '1;
+            usr_irq_en_reg             <= '0;
+            pmod_en_reg                <= '0;
             slot_debug_out_reg         <= '0;
             dma_awprot_reg             <= '0;
             dma_arprot_reg             <= '0;
@@ -556,23 +542,13 @@ module efpga_manager #(
                     endcase
                 end else if (aw_slot_idx < 4'(NUM_SLOTS)) begin
                     case (slot_aw_offset)
-                        12'h000: begin
-                            if (s_axil_wstrb[0]) begin
-                                slot_reset_fabric_reg[aw_slot_sel] <= s_axil_wdata[3:0];
-                                slot_reset_npu_reg[aw_slot_sel]    <= s_axil_wdata[4];
-                            end
-                            if (s_axil_wstrb[2]) begin
-                                slot_reset_wdog_reg[aw_slot_sel]   <= s_axil_wdata[16];
-                            end
-                            if (s_axil_wstrb[3]) begin
-                                slot_reset_bridge_ctrl_reg[aw_slot_sel] <= s_axil_wdata[24];
-                                slot_reset_bridge_dma_reg[aw_slot_sel]  <= s_axil_wdata[25];
-                            end
-                        end
+                        12'h000: ; // Reserved (Legacy SLOT_RESET — handled by external Reset Controller)
                         12'h004: begin
                             if (s_axil_wstrb[0]) begin
-                                dec_req_reg[aw_slot_sel]   <= s_axil_wdata[0];
-                                dec_force_reg[aw_slot_sel] <= s_axil_wdata[1];
+                                dec_req_reg[aw_slot_sel]    <= s_axil_wdata[0];
+                                dec_force_reg[aw_slot_sel]  <= s_axil_wdata[1];
+                                usr_irq_en_reg[aw_slot_sel] <= s_axil_wdata[2];
+                                pmod_en_reg[aw_slot_sel]    <= s_axil_wdata[3];
                             end
                             if (s_axil_wstrb[1]) begin
                                 dma_awprot_reg[aw_slot_sel] <= s_axil_wdata[12:10];
@@ -621,12 +597,12 @@ module efpga_manager #(
                 end else if (ar_slot_idx < 4'(NUM_SLOTS)) begin
                     if ((local_araddr[11:0] & 12'hFFC) < 12'h018) begin
                         case (local_araddr[11:0] & 12'hFFC)
-                            12'h000: axi_rdata <= slot_reset_o[ar_slot_sel];
+                            12'h000: axi_rdata <= 32'h00000000;
                             12'h004: axi_rdata <= {
                                 6'd0, wb_m_enable_wire[ar_slot_sel], wb_s_enable_wire[ar_slot_sel],
                                 4'd0, wdog_en_cm_wire[ar_slot_sel], wdog_en_ds_wire[ar_slot_sel], wdog_en_cs_wire[ar_slot_sel], wdog_en_dm_wire[ar_slot_sel],
                                 dma_arprot_reg[ar_slot_sel], dma_awprot_reg[ar_slot_sel], 1'b0, pmp_g_en_wire[ar_slot_sel],
-                                6'd0, dec_force_reg[ar_slot_sel], dec_req_reg[ar_slot_sel]
+                                4'd0, pmod_en_reg[ar_slot_sel], usr_irq_en_reg[ar_slot_sel], dec_force_reg[ar_slot_sel], dec_req_reg[ar_slot_sel]
                             };
                             12'h008: axi_rdata <= {
                                 11'd0, wdog_soc_wire[ar_slot_sel], wdog_cs_to_wire[ar_slot_sel], wdog_cs_pr_wire[ar_slot_sel], wdog_dm_to_wire[ar_slot_sel], wdog_dm_pr_wire[ar_slot_sel],

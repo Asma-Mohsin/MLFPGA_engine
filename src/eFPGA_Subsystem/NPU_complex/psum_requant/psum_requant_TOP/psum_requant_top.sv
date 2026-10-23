@@ -40,16 +40,7 @@ module psum_requant_top #(
     genvar c;
     generate
         for (c = 0; c < ARRAY_WIDTH; c++) begin : gen_containers
-`ifdef LIBRELANE_HARD_MACROS
             psum_requant_container container_inst (
-`else
-            psum_requant_container #(
-                .PSUM_WIDTH      (PSUM_WIDTH),
-                .PSUM_WORDS      (PSUM_WORDS),
-                .SCALE_WIDTH     (SCALE_WIDTH),
-                .ACTIVATION_WIDTH(ACTIVATION_WIDTH)
-            ) container_inst (
-`endif
                 .clk_i       (clk_i),
                 .rst_n       (rst_n),
                 .psum_lut_en (psum_lut_en),
@@ -68,3 +59,4 @@ module psum_requant_top #(
     endgenerate
 
 endmodule
+
