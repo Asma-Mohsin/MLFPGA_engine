@@ -6,6 +6,7 @@ DESIGN_NAME: efpga_subsystem_top
 
 VERILOG_FILES:
   - dir::../src/eFPGA_Subsystem/eFPGA_Subsystem_TOP/efpga_subsystem_top.sv
+  - dir::../src/target_config_pkg.sv
   - dir::../src/eFPGA_Subsystem/AXI_Connector/axi_decoupler.sv
   - dir::../src/eFPGA_Subsystem/AXI_Connector/axi_watchdog_master_monitor.sv
   - dir::../src/eFPGA_Subsystem/AXI_Connector/axi_watchdog_slave_monitor.sv
@@ -41,6 +42,7 @@ VERILOG_FILES:
   - dir::../ip/Fabric/OWAS_fabric/Fabric/eFPGA_top.v
   - dir::../ip/Fabric/OWAS_fabric/Fabric/models_pack.v
 
+
 USE_SLANG: true
 VERILOG_DEFINES: [LIBRELANE_HARD_MACROS, IHP_SG13CMOS5L]
 ERROR_ON_SYNTH_CHECKS: false
@@ -51,19 +53,26 @@ CLOCK_PERIOD: 10.0
 
 FP_SIZING: absolute
 # Shift the macro layout right by 200 um and widen the die to preserve the PSUM column's right-edge position.
-DIE_AREA: [0, 0, 3800, 4800]
-PL_TARGET_DENSITY_PCT: 20
+DIE_AREA: [0, 0, 3800, 5000]
+PL_TARGET_DENSITY_PCT: 50
 FP_OBSTRUCTIONS:
   - [3774.24, 15.12, 3794.24, 4784.88]
-  - [300, 15.12, 2647.68, 100]
-  - [300, 4629.7, 2647.68, 4784.88]
+#  - [300, 15.12, 2647.68, 100]
+# - [300, 4629.7, 2647.68, 4784.88]
+SLANG_ARGUMENTS: ['--keep-hierarchy']
+#SYNTH_HIERARCHY. _MODE: keep
+GPL_CELL_PADDING: 4
+DPL_CELL_PADDING: 2
 
 VDD_NETS: [VDD]
 GND_NETS: [VSS]
 PDN_MULTILAYER: true
 PDN_CFG: dir::pdn_cfg.tcl
+IO_PIN_ORDER_CFG: dir::pin_order.cfg
+
 GRT_ALLOW_CONGESTION: True
-DRT_OPT_ITERS: 1
+#DRT_OPT_ITERS: 3
+ERROR_ON_DISCONNECTED_PINS: False
 GRT_OVERFLOW_ITERS: 1
 DRT_ANTENNA_REPAIR_ITERS: 0
 PDN_MACRO_CONNECTIONS:
@@ -80,7 +89,7 @@ MACROS:
       - dir::../ip/Fabric/OWAS_fabric/Fabric/macro/final_views/nl/eFPGA.nl.v
     instances:
       "fabric_inst.eFPGA_inst":
-        location: [300, 100]
+        location: [300, 250]
         orientation: N
 
   act_bank_container:
@@ -99,28 +108,28 @@ MACROS:
         - dir::../ip/act_sram/final/lib/nom_slow_1p08V_125C/act_bank_container__nom_slow_1p08V_125C.lib
     instances:
       "npu_inst.act_buffer_stage.gen_containers[0].container_inst":
-        location: [2647.68, 252.58]
+        location: [2647.68, 402.58]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[1].container_inst":
-        location: [2647.68, 796.9]
+        location: [2647.68, 946.9]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[2].container_inst":
-        location: [2647.68, 1341.22]
+        location: [2647.68, 1491.22]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[3].container_inst":
-        location: [2647.68, 1885.54]
+        location: [2647.68, 2035.54]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[4].container_inst":
-        location: [2647.68, 2429.86]
+        location: [2647.68, 2579.86]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[5].container_inst":
-        location: [2647.68, 2974.18]
+        location: [2647.68, 3124.18]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[6].container_inst":
-        location: [2647.68, 3518.5]
+        location: [2647.68, 3668.5]
         orientation: R270
       "npu_inst.act_buffer_stage.gen_containers[7].container_inst":
-        location: [2647.68, 4062.82]
+        location: [2647.68, 4212.82]
         orientation: R270
 
   psum_requant_container:
@@ -139,26 +148,26 @@ MACROS:
         - dir::../ip/psum_sram/final/lib/nom_slow_1p08V_125C/psum_requant_container__nom_slow_1p08V_125C.lib
     instances:
       "npu_inst.psum_requant_stage.gen_containers[0].container_inst":
-        location: [3314.24, 300]
+        location: [3314.24, 450]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[1].container_inst":
-        location: [3314.24, 780]
+        location: [3314.24, 930]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[2].container_inst":
-        location: [3314.24, 1260]
+        location: [3314.24, 1410]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[3].container_inst":
-        location: [3314.24, 1740]
+        location: [3314.24, 1890]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[4].container_inst":
-        location: [3314.24, 2220]
+        location: [3314.24, 2370]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[5].container_inst":
-        location: [3314.24, 2700]
+        location: [3314.24, 2850]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[6].container_inst":
-        location: [3314.24, 3180]
+        location: [3314.24, 3330]
         orientation: R0
       "npu_inst.psum_requant_stage.gen_containers[7].container_inst":
-        location: [3314.24, 3660]
+        location: [3314.24, 3810]
         orientation: R0
