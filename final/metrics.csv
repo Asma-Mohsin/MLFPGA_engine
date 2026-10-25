@@ -4,18 +4,18 @@ design__lint_timing_construct__count,0
 design__lint_warning__count,323
 design__inferred_latch__count,0
 design__instance__count,421409
-design__instance__area,1.66097E+7
+design__instance__area,16609700
 design__instance_unmapped__count,0
 synthesis__check_error__count,0
 design__die__bbox,0.0 0.0 4000.0 4250.0
 design__core__bbox,5.76 15.12 3994.08 4233.6
 design__io,568
-design__die__area,1.7E+7
-design__core__area,1.68246E+7
+design__die__area,17000000
+design__core__area,16824600
 design__instance__count__stdcell,126103
-design__instance__area__stdcell,1.63556E+6
+design__instance__area__stdcell,1635560
 design__instance__count__macros,17
-design__instance__area__macros,1.25668E+7
+design__instance__area__macros,12566800
 design__instance__count__padcells,0
 design__instance__area__padcells,0
 design__instance__count__cover,0
@@ -27,7 +27,7 @@ design__rows:CoreSite,2140
 design__sites,2228266
 design__sites:CoreSite,2228266
 design__instance__count__class:macro,17
-design__instance__area__class:macro,1.25668E+7
+design__instance__area__class:macro,12566800
 design__instance__count__class:buffer,66183
 design__instance__area__class:buffer,773745
 design__instance__count__class:inverter,2475
@@ -58,7 +58,7 @@ flow__warnings__count:GRT-0281,4
 design__instance__displacement__total,317800
 design__instance__displacement__mean,2.519
 design__instance__displacement__max,446.739
-route__wirelength__estimated,9.39038E+6
+route__wirelength__estimated,9390380
 design__violations,0
 global_route__vias,764320
 global_route__wirelength,12009672
@@ -91,6 +91,6 @@ design__disconnected_pin__count,104
 design__critical_disconnected_pin__count,1
 route__wirelength__max,76975.8
 design__instance__count__class:fill_cell,295289
-design__instance__area__class:fill_cell,2.4074E+6
+design__instance__area__class:fill_cell,2407400
 design__xor_difference__count,15
 magic__illegal_overlap__count,45739

@@ -3,6 +3,7 @@ PDK_ROOT ?= /shares/zitipoolhome/bm185/Desktop/SSD4TB/OWAS_NOV/fabulous_A5/PDK
 PDK ?= ihp-sg13cmos5l
 LL_DIR ?= $(abspath ./librelane)
 NIX_DIR ?= /shares/zitipoolhome/bm185/Desktop/SSD4TB/OWAS_NOV/fabulous_A5/librelane
+FINAL_DIR ?= final
 
 .PHONY: all
 all: librelane
@@ -34,6 +35,32 @@ librelane-openroad: $(PDK_ROOT)/$(PDK)
 librelane-klayout: $(PDK_ROOT)/$(PDK)
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --last-run --flow OpenInKLayout
 .PHONY: librelane-klayout
+
+.PHONY: zip zip-final
+zip: zip-final
+
+zip-final:
+	test -d "$(FINAL_DIR)"
+	find "$(FINAL_DIR)" -type f \( \
+		-name "*.gds" -o \
+		-name "*.def" -o \
+		-name "*.mag" -o \
+		-name "*.odb" -o \
+		-name "*.spef" \
+	\) -exec sh -c '\
+		set -eu; \
+		for file do \
+			dir=$${file%/*}; \
+			base=$${file##*/}; \
+			archive=$${base}.zip; \
+			tmp=$${archive}.tmp; \
+			rm -f "$$dir/$$tmp"; \
+			(cd "$$dir" && zip -D -q "$$tmp" "$$base"); \
+			unzip -tq "$$dir/$$tmp"; \
+			mv -f "$$dir/$$tmp" "$$dir/$$archive"; \
+			rm -- "$$file"; \
+			printf "Archived and replaced %s with %s/%s\\n" "$$file" "$$dir" "$$archive"; \
+		done' sh {} +
 
 .PHONY: nix
 nix:
