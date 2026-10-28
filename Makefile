@@ -1,7 +1,6 @@
 REPO_ROOT := $(abspath ../..)
 PDK_ROOT ?= $(error PDK_ROOT is not set: directory holding your ciel PDKs)
 LL_DIR ?= $(abspath ./librelane)
-NIX_DIR ?= $(error NIX_DIR is not set: path to your LibreLane checkout)
 FINAL_DIR ?= final
 
 include versions.env
@@ -70,13 +69,12 @@ abstract: check-versions
 check-versions:
 	@test -e "$(PDK_ROOT)/$(PDK)" && test "$$(readlink -f $(PDK_ROOT)/$(PDK))" = "$$(readlink -f $(PDK_ROOT)/ciel/$(PDK_FAMILY)/versions/$(PDK_HASH)/$(PDK))" \
 		|| { echo "ERROR: $(PDK_ROOT)/$(PDK) is not $(PDK_FAMILY) $(PDK_HASH) (versions.env). Run: ciel enable --pdk-family $(PDK_FAMILY) $(PDK_HASH)"; exit 1; }
-	@test "$$(git -C $(NIX_DIR) rev-parse HEAD)" = "$(LIBRELANE_COMMIT)" \
-		|| { echo "ERROR: LibreLane in $(NIX_DIR) is not at $(LIBRELANE_COMMIT) (versions.env)"; exit 1; }
-	@grep -q "librelane/librelane/$(LIBRELANE_COMMIT)" ip/Fabric/flake.nix \
-		|| { echo "ERROR: ip/Fabric/flake.nix does not pin LibreLane $(LIBRELANE_COMMIT) (versions.env)"; exit 1; }
-	@# FABulous takes the PDK hash LibreLane recommends, so both must agree
-	@git -C $(NIX_DIR) show $(LIBRELANE_COMMIT):librelane/pdk_hashes.yaml | grep -q "^$(PDK_FAMILY): $(PDK_HASH)$$" \
-		|| { echo "ERROR: LibreLane $(LIBRELANE_COMMIT) does not recommend $(PDK_FAMILY) $(PDK_HASH) (versions.env)"; exit 1; }
+	@grep -q 'FAB_PDK_HASH = "$(PDK_HASH)"' ip/Fabric/flake.nix \
+		|| { echo "ERROR: ip/Fabric/flake.nix does not set FAB_PDK_HASH to $(PDK_HASH) (versions.env)"; exit 1; }
+	@# Also fails outside the repo's nix shell (no librelane module): run `make nix` first
+	@python3 -c 'import librelane, pathlib; print((pathlib.Path(librelane.__file__).parent / "pdk_hashes.yaml").read_text())' \
+		| grep -q "^$(PDK_FAMILY): $(PDK_HASH)$$" \
+		|| { echo "ERROR: the LibreLane in this shell does not recommend $(PDK_FAMILY) $(PDK_HASH) (versions.env); run make targets inside make nix"; exit 1; }
 
 .PHONY: zip zip-final
 zip: zip-final
@@ -104,6 +102,7 @@ zip-final:
 			printf "Archived and replaced %s with %s/%s\\n" "$$file" "$$dir" "$$archive"; \
 		done' sh {} +
 
+# Repo flake (flake.nix): LibreLane and all tools locked in flake.lock
 .PHONY: nix
 nix:
-	cd "$(NIX_DIR)" && nix-shell --run 'cd "$(CURDIR)" && exec bash --rcfile <(cat "$${HOME}/.bashrc"; printf "%s\n" '\''PS1="\[\\033[01;35m\][nix-shell]\[\\033[00m\] \[\\033[01;32m\]$${USER}@\\h\[\\033[00m\]:\[\\033[01;34m\]\\w\[\\033[00m\]> "'\'') -i'
+	nix develop $(CURDIR) --command bash -c 'exec bash --rcfile <(cat "$${HOME}/.bashrc"; printf "%s\n" '\''PS1="\[\\033[01;35m\][nix-shell]\[\\033[00m\] \[\\033[01;32m\]$${USER}@\\h\[\\033[00m\]:\[\\033[01;34m\]\\w\[\\033[00m\]> "'\'') -i'
