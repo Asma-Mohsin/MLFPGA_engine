@@ -1,40 +1,55 @@
 REPO_ROOT := $(abspath ../..)
-PDK_ROOT ?= /shares/zitipoolhome/bm185/Desktop/SSD4TB/OWAS_NOV/fabulous_A5/PDK
-PDK ?= ihp-sg13cmos5l
+PDK_ROOT ?= $(error PDK_ROOT is not set: directory holding your ciel PDKs)
 LL_DIR ?= $(abspath ./librelane)
-NIX_DIR ?= /shares/zitipoolhome/bm185/Desktop/SSD4TB/OWAS_NOV/fabulous_A5/librelane
+NIX_DIR ?= $(error NIX_DIR is not set: path to your LibreLane checkout)
 FINAL_DIR ?= final
+
+include versions.env
+# FABulous reads the same pin
+export FAB_PDK := $(PDK)
+export FAB_PDK_ROOT = $(PDK_ROOT)
+export FAB_PDK_HASH := $(PDK_HASH)
+
+# Make librelane_plugin_regions importable so LibreLane auto-loads it
+export PYTHONPATH := $(CURDIR):$(PYTHONPATH)
 
 .PHONY: all
 all: librelane
 
-librelane: $(PDK_ROOT)/$(PDK)
+librelane: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ 
 .PHONY: librelane
 
-librelane-explore: $(PDK_ROOT)/$(PDK)
+librelane-explore: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ --flow SynthesisExploration
 .PHONY: librelane-explore
 
-librelane-nodrc: $(PDK_ROOT)/$(PDK)
+librelane-nodrc: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ --skip KLayout.DRC --skip Magic.DRC --skip KLayout.Antenna --skip KLayout.Density
 .PHONY: librelane-nodrc
 
-librelane-magicdrc: $(PDK_ROOT)/$(PDK)
+librelane-magicdrc: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ --skip KLayout.DRC
 .PHONY: librelane-magicdrc
 
-librelane-klayoutdrc: $(PDK_ROOT)/$(PDK)
+librelane-klayoutdrc: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ --skip Magic.DRC
 .PHONY: librelane-klayoutdrc
 
-librelane-openroad: $(PDK_ROOT)/$(PDK)
+librelane-openroad: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --last-run --flow OpenInOpenROAD
 .PHONY: librelane-openroad
 
-librelane-klayout: $(PDK_ROOT)/$(PDK)
+librelane-klayout: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --last-run --flow OpenInKLayout
 .PHONY: librelane-klayout
+
+.PHONY: check-versions
+check-versions:
+	@test -e "$(PDK_ROOT)/$(PDK)" && test "$$(readlink -f $(PDK_ROOT)/$(PDK))" = "$$(readlink -f $(PDK_ROOT)/ciel/$(PDK_FAMILY)/versions/$(PDK_HASH)/$(PDK))" \
+		|| { echo "ERROR: $(PDK_ROOT)/$(PDK) is not $(PDK_FAMILY) $(PDK_HASH) (versions.env). Run: ciel enable --pdk-family $(PDK_FAMILY) $(PDK_HASH)"; exit 1; }
+	@test "$$(git -C $(NIX_DIR) rev-parse HEAD)" = "$(LIBRELANE_COMMIT)" \
+		|| { echo "ERROR: LibreLane in $(NIX_DIR) is not at $(LIBRELANE_COMMIT) (versions.env)"; exit 1; }
 
 .PHONY: zip zip-final
 zip: zip-final
