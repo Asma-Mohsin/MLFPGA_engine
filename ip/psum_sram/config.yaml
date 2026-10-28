@@ -20,12 +20,13 @@ PNR_SDC_FILE: dir::constraint.sdc
 SIGNOFF_SDC_FILE: dir::constraint.sdc
 FALLBACK_SDC: dir::constraint.sdc
 IO_PIN_ORDER_CFG: dir::pin_order.cfg
+PDN_CFG: dir::pdn_cfg.tcl
 
 # Timing
 CLOCK_PORT: clk_i
 CLOCK_NET: clk_i
 CLOCK_PERIOD: 15.0
-PDN_EXTEND_TO: "boundary"
+#PDN_EXTEND_TO: "core_ring"
 # NOTE: Use these if the setup timing is violated in the typical corner
 PL_RESIZER_SETUP_SLACK_MARGIN: 2.5
 PL_RESIZER_SETUP_MAX_BUFFER_PCT: 80
@@ -46,15 +47,31 @@ GRT_ALLOW_CONGESTION: true
 #PL_MAX_DISPLACEMENT_X: 2000
 PL_MAX_DISPLACEMENT_Y: 2000
 
+BOTTOM_MARGIN_MULT: 3
+TOP_MARGIN_MULT: 3
+LEFT_MARGIN_MULT: 20
+RIGHT_MARGIN_MULT: 20
 # PDN Setup
 
 VDD_NETS:
 - VDD
 GND_NETS:
 - VSS
-
+#PDN_VOFFSET: 20
+#PDN_VERTICAL_LAYER: Metal3
 PDN_MULTILAYER: True
-
+PDN_CORE_RING: True
+PDN_CORE_HORIZONTAL_LAYER: TopMetal1
+PDN_CORE_VERTICAL_LAYER: Metal4
+PDN_CORE_RING_HSPACING: 1.64
+PDN_CORE_RING_VSPACING: 1.64
+PDN_CORE_RING_VWIDTH: 3
+PDN_CORE_RING_HWIDTH: 3
+PDN_CORE_RING_VOFFSET: 1
+PDN_CORE_RING_HOFFSET: 1
+PDN_CORE_RING_ALLOW_OUT_OF_DIE: False
+PDN_HORIZONTAL_HALO: 2
+PDN_VERTICAL_HALO: 2
 PDN_MACRO_CONNECTIONS:
   - "bank_A_sram.gen_ihp_256x32.u_sram_256x32 VDD VSS VDD! VSS!"
   - "bank_A_sram.gen_ihp_256x32.u_sram_256x32 VDD VSS VDDARRAY! VSS!"
@@ -76,8 +93,8 @@ MACROS:
         - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_256x32_c2_bm_bist_slow_1p08V_125C.lib
     instances:
       bank_A_sram.gen_ihp_256x32.u_sram_256x32:
-        location: [30, 340]
+        location: [30, 335]
         orientation: FN
       bank_B_sram.gen_ihp_256x32.u_sram_256x32:
-        location: [30, 17]
+        location: [30, 20]
         orientation: FS

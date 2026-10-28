@@ -140,9 +140,6 @@ if { $::env(PDN_CORE_RING) == 1 } {
         append_if_flag arg_list PDN_CORE_RING_CONNECT_TO_PADS -connect_to_pads
         append_if_equals arg_list PDN_EXTEND_TO "boundary" -extend_to_boundary
 
-        set pdn_core_vertical_layer $::env(PDN_VERTICAL_LAYER)
-        set pdn_core_horizontal_layer $::env(PDN_HORIZONTAL_LAYER)
-
         if { [info exists ::env(PDN_CORE_VERTICAL_LAYER)] } {
             set pdn_core_vertical_layer $::env(PDN_CORE_VERTICAL_LAYER)
         }
@@ -159,23 +156,11 @@ if { $::env(PDN_CORE_RING) == 1 } {
             -core_offset "$::env(PDN_CORE_RING_VOFFSET) $::env(PDN_CORE_RING_HOFFSET)" \
             {*}$arg_list
 
-        if { [info exists ::env(PDN_CORE_VERTICAL_LAYER)] } {
-            add_pdn_connect \
-                -grid stdcell_grid \
-                -layers "$::env(PDN_CORE_VERTICAL_LAYER) $::env(PDN_HORIZONTAL_LAYER)"
-        }
-
-        if { [info exists ::env(PDN_CORE_HORIZONTAL_LAYER)] } {
-            add_pdn_connect \
-                -grid stdcell_grid \
-                -layers "$::env(PDN_CORE_HORIZONTAL_LAYER) $::env(PDN_VERTICAL_LAYER)"
-        }
-
-        if { [info exists ::env(PDN_CORE_VERTICAL_LAYER)] && [info exists ::env(PDN_CORE_HORIZONTAL_LAYER)] } {
-            add_pdn_connect \
-                -grid stdcell_grid \
-                -layers "$::env(PDN_CORE_VERTICAL_LAYER) $::env(PDN_CORE_HORIZONTAL_LAYER)"
-        }
+        #if { [info exists ::env(PDN_CORE_VERTICAL_LAYER)] && [info exists ::env(PDN_CORE_HORIZONTAL_LAYER)] } {
+        #    add_pdn_connect \
+        #        -grid stdcell_grid \
+        #        -layers "$::env(PDN_CORE_VERTICAL_LAYER) $::env(PDN_CORE_HORIZONTAL_LAYER)"
+        #}
 
     } else {
         throw APPLICATION "PDN_CORE_RING cannot be used when PDN_MULTILAYER is set to false."
@@ -195,37 +180,37 @@ add_pdn_connect \
 
 # SRAM macros
 
-define_pdn_grid \
-    -macro \
-    -instances "\
-    i_chip_core.sram_0" \
-    -name sram_NS \
-    -starts_with POWER
-
-add_pdn_stripe \
-    -grid sram_NS \
-    -layer Metal5 \
-    -width 2.81 \
-    -pitch 11.24 \
-    -offset 2.81 \
-    -spacing 2.81 \
-    -nets "VSS VDD" \
-    -starts_with POWER
-
-add_pdn_connect \
-    -grid sram_NS \
-    -layers "Metal4 Metal5"
-add_pdn_connect \
-    -grid sram_NS \
-    -layers "Metal5 TopMetal1"
-
-define_pdn_grid \
-    -macro \
-    -instances "\
-    i_chip_core.sram_1" \
-    -name sram_WE \
-    -starts_with POWER
-
-add_pdn_connect \
-    -grid sram_WE \
-    -layers "Metal4 TopMetal1"
+#define_pdn_grid \
+#    -macro \
+#    -instances "\
+#    i_chip_core.sram_0" \
+#    -name sram_NS \
+#    -starts_with POWER
+#
+#add_pdn_stripe \
+#    -grid sram_NS \
+#    -layer Metal5 \
+#    -width 2.81 \
+#    -pitch 11.24 \
+#    -offset 2.81 \
+#    -spacing 2.81 \
+#    -nets "VSS VDD" \
+#    -starts_with POWER
+#
+#add_pdn_connect \
+#    -grid sram_NS \
+#    -layers "Metal4 Metal5"
+#add_pdn_connect \
+#    -grid sram_NS \
+#    -layers "Metal5 TopMetal1"
+#
+#define_pdn_grid \
+#    -macro \
+#    -instances "\
+#    i_chip_core.sram_1" \
+#    -name sram_WE \
+#    -starts_with POWER
+#
+#add_pdn_connect \
+#    -grid sram_WE \
+#    -layers "Metal4 TopMetal1"
