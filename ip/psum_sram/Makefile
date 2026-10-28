@@ -1,40 +1,46 @@
 REPO_ROOT := $(abspath ../..)
-PDK_ROOT ?= /shares/zitipoolhome/bm185/Desktop/SSD4TB/OWAS_NOV/fabulous_A5/PDK
-PDK ?= ihp-sg13cmos5l
+PDK_ROOT ?= $(error PDK_ROOT is not set: directory holding your ciel PDKs)
 LL_DIR ?= $(abspath .)
-NIX_DIR ?= /shares/zitipoolhome/bm185/Desktop/SSD4TB/OWAS_NOV/fabulous_A5/librelane
+
+# Same PDK and LibreLane as the top level (versions.env, flake.nix)
+include $(REPO_ROOT)/versions.env
+
+.PHONY: check-versions
+check-versions:
+	$(MAKE) -C $(REPO_ROOT) check-versions PDK_ROOT=$(PDK_ROOT)
 
 .PHONY: all
 all: librelane
 
-librelane: $(PDK_ROOT)/$(PDK)
+librelane: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ 
 .PHONY: librelane
 
-librelane-explore: $(PDK_ROOT)/$(PDK)
+librelane-explore: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ --flow SynthesisExploration
 .PHONY: librelane-explore
 
-librelane-nodrc: $(PDK_ROOT)/$(PDK)
+librelane-nodrc: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ --skip KLayout.DRC --skip Magic.DRC --skip KLayout.Antenna --skip KLayout.Density
 .PHONY: librelane-nodrc
 
-librelane-magicdrc: $(PDK_ROOT)/$(PDK)
+librelane-magicdrc: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ --skip KLayout.DRC
 .PHONY: librelane-magicdrc
 
-librelane-klayoutdrc: $(PDK_ROOT)/$(PDK)
+librelane-klayoutdrc: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --save-views-to final/ --skip Magic.DRC
 .PHONY: librelane-klayoutdrc
 
-librelane-openroad: $(PDK_ROOT)/$(PDK)
+librelane-openroad: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --last-run --flow OpenInOpenROAD
 .PHONY: librelane-openroad
 
-librelane-klayout: $(PDK_ROOT)/$(PDK)
+librelane-klayout: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --last-run --flow OpenInKLayout
 .PHONY: librelane-klayout
 
+# Repo flake (flake.nix), same shell as `make nix` at the top level
 .PHONY: nix
 nix:
-	cd "$(NIX_DIR)" && nix-shell --run 'cd "$(CURDIR)" && exec bash --rcfile <(cat "$${HOME}/.bashrc"; printf "%s\n" '\''PS1="\[\\033[01;35m\][nix-shell]\[\\033[00m\] \[\\033[01;32m\]$${USER}@\\h\[\\033[00m\]:\[\\033[01;34m\]\\w\[\\033[00m\]> "'\'') -i'
+	nix develop $(REPO_ROOT) --command bash -c 'exec bash --rcfile <(cat "$${HOME}/.bashrc"; printf "%s\n" '\''PS1="\[\\033[01;35m\][nix-shell]\[\\033[00m\] \[\\033[01;32m\]$${USER}@\\h\[\\033[00m\]:\[\\033[01;34m\]\\w\[\\033[00m\]> "'\'') -i'
