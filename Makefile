@@ -40,6 +40,32 @@ librelane-klayout: check-versions
 	librelane $(LL_DIR)/config.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --last-run --flow OpenInKLayout
 .PHONY: librelane-klayout
 
+# Integration abstract: empty 4000 x 4250 macro (pins, PDN, full OBS) for top-level integration.
+# Liberty is taken from a routed run, with the area set to the macro size.
+ABSTRACT_TAG ?= abstract_d4000_h4250
+ABSTRACT_RUN := $(LL_DIR)/runs/$(ABSTRACT_TAG)
+ABSTRACT_LIB_RUN ?= $(LL_DIR)/runs/region_d4100_h4050b
+
+# Writes the views to $(FINAL_DIR) in the LibreLane final/ layout, replacing what is there, and zips them.
+abstract: check-versions
+	test -d "$(ABSTRACT_LIB_RUN)/final/lib"
+	test -n "$(FINAL_DIR)"
+	librelane $(LL_DIR)/config_abstract_d4000_h4250.yaml --pdk $(PDK) --pdk-root $(PDK_ROOT) --manual-pdk --run-tag $(ABSTRACT_TAG) --overwrite
+	ABSTRACT_RUN=$(ABSTRACT_RUN) openroad -exit $(LL_DIR)/abstract/write_abstract_lef.tcl
+	rm -rf "$(FINAL_DIR)" && mkdir -p "$(FINAL_DIR)/lef" "$(FINAL_DIR)/gds" "$(FINAL_DIR)/nl" "$(FINAL_DIR)/vh"
+	cp $(ABSTRACT_RUN)/final/efpga_subsystem_top.lef "$(FINAL_DIR)/lef/"
+	cp $(ABSTRACT_RUN)/final/gds/efpga_subsystem_top.gds "$(FINAL_DIR)/gds/"
+	cp $(ABSTRACT_RUN)/final/nl/efpga_subsystem_top.nl.v "$(FINAL_DIR)/nl/"
+	cp $(ABSTRACT_LIB_RUN)/final/vh/efpga_subsystem_top.vh "$(FINAL_DIR)/vh/"
+	area=$$(awk '$$1 == "SIZE" { printf "%.3f", $$2 * $$4 }' "$(FINAL_DIR)/lef/efpga_subsystem_top.lef") && \
+	for f in $(ABSTRACT_LIB_RUN)/final/lib/*/*.lib; do \
+		corner=$${f%/*}; corner=$${corner##*/}; \
+		mkdir -p "$(FINAL_DIR)/lib/$$corner"; \
+		sed "s/^\(\s*area : \)[0-9.]*/\1$$area/" "$$f" > "$(FINAL_DIR)/lib/$$corner/$${f##*/}"; \
+	done
+	$(MAKE) zip-final
+.PHONY: abstract
+
 .PHONY: check-versions
 check-versions:
 	@test -e "$(PDK_ROOT)/$(PDK)" && test "$$(readlink -f $(PDK_ROOT)/$(PDK))" = "$$(readlink -f $(PDK_ROOT)/ciel/$(PDK_FAMILY)/versions/$(PDK_HASH)/$(PDK))" \

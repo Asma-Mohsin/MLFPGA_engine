@@ -1,0 +1,41 @@
+# Integration abstract (2026-10-28): empty efpga_subsystem_top at the original 4000 x 4250 for
+# top-level integration. Port-only stub, floorplan, pins (shared pin_order.cfg), PDN (same stdcell
+# grid settings as the real flow: Metal4 / TopMetal1 straps, pitch 50), GDS. No placement, CTS or
+# routing.
+# LEF: write_abstract_lef on the final ODB (OpenROAD.WriteViews is not a registered step).
+# Liberty: take the timing models from runs/region_d4100_h4050b/final/lib.
+meta:
+  version: 3
+  flow:
+    - Yosys.Synthesis
+    - OpenROAD.Floorplan
+    - OpenROAD.GeneratePDN
+    - Odb.AddRoutingObstructions
+    - Odb.CustomIOPlacement
+    - KLayout.StreamOut
+
+DESIGN_NAME: efpga_subsystem_top
+VERILOG_FILES:
+  - dir::abstract/efpga_subsystem_top_stub.v
+# LibreLane dev passes the IO-pad liberty to synthesis
+EXTRA_EXCLUDED_CELLS: ["sg13cmos5l_IOPad*"]
+CLOCK_PORT: clk_i
+CLOCK_NET: clk_i
+CLOCK_PERIOD: 20.0
+
+FP_SIZING: absolute
+DIE_AREA: [0, 0, 4000, 4250]
+
+VDD_NETS: [VDD]
+GND_NETS: [VSS]
+PDN_MULTILAYER: true
+IO_PIN_ORDER_CFG: dir::pin_order.cfg
+
+# Blocks every routing layer (sg13cmos5l: Metal1..Metal4, TopMetal1) over the whole die, as the
+# real macro uses all of them. No layer is left for top-level routing over the macro.
+ROUTING_OBSTRUCTIONS:
+  - [Metal1, 0, 0, 4000, 4250]
+  - [Metal2, 0, 0, 4000, 4250]
+  - [Metal3, 0, 0, 4000, 4250]
+  - [Metal4, 0, 0, 4000, 4250]
+  - [TopMetal1, 0, 0, 4000, 4250]
