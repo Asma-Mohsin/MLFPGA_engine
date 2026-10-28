@@ -5,7 +5,7 @@ current_design psum_requant_container
 ###############################################################################
 # Timing Constraints
 ###############################################################################
-create_clock -name clk_i -period 10.0000 [get_ports {clk_i}]
+create_clock -name clk_i -period 15.0000 [get_ports {clk_i}]
 set_clock_transition 0.1500 [get_clocks {clk_i}]
 set_clock_uncertainty 0.2500 clk_i
 set_propagated_clock [get_clocks {clk_i}]
