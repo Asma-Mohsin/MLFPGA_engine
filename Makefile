@@ -5,10 +5,6 @@ NIX_DIR ?= $(error NIX_DIR is not set: path to your LibreLane checkout)
 FINAL_DIR ?= final
 
 include versions.env
-# FABulous reads the same pin
-export FAB_PDK := $(PDK)
-export FAB_PDK_ROOT = $(PDK_ROOT)
-export FAB_PDK_HASH := $(PDK_HASH)
 
 # Make librelane_plugin_regions importable so LibreLane auto-loads it
 export PYTHONPATH := $(CURDIR):$(PYTHONPATH)
@@ -50,6 +46,11 @@ check-versions:
 		|| { echo "ERROR: $(PDK_ROOT)/$(PDK) is not $(PDK_FAMILY) $(PDK_HASH) (versions.env). Run: ciel enable --pdk-family $(PDK_FAMILY) $(PDK_HASH)"; exit 1; }
 	@test "$$(git -C $(NIX_DIR) rev-parse HEAD)" = "$(LIBRELANE_COMMIT)" \
 		|| { echo "ERROR: LibreLane in $(NIX_DIR) is not at $(LIBRELANE_COMMIT) (versions.env)"; exit 1; }
+	@grep -q "librelane/librelane/$(LIBRELANE_COMMIT)" ip/Fabric/flake.nix \
+		|| { echo "ERROR: ip/Fabric/flake.nix does not pin LibreLane $(LIBRELANE_COMMIT) (versions.env)"; exit 1; }
+	@# FABulous takes the PDK hash LibreLane recommends, so both must agree
+	@git -C $(NIX_DIR) show $(LIBRELANE_COMMIT):librelane/pdk_hashes.yaml | grep -q "^$(PDK_FAMILY): $(PDK_HASH)$$" \
+		|| { echo "ERROR: LibreLane $(LIBRELANE_COMMIT) does not recommend $(PDK_FAMILY) $(PDK_HASH) (versions.env)"; exit 1; }
 
 .PHONY: zip zip-final
 zip: zip-final
