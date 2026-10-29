@@ -94,18 +94,18 @@ PDN_MACRO_CONNECTIONS:
 MACROS:
   RM_IHPSG13_1P_512x8_c3_bm_bist:
     gds:
-      - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_512x8_c3_bm_bist.gds
+      - pdk_dir::libs.ref/sg13cmos5l_sram/gds/RM_IHPSG13_1P_512x8_c3_bm_bist.gds
     lef:
-      - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_512x8_c3_bm_bist.lef
+      - pdk_dir::libs.ref/sg13cmos5l_sram/lef/RM_IHPSG13_1P_512x8_c3_bm_bist.lef
     nl:
-      - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/verilog/RM_IHPSG13_1P_512x8_c3_bm_bist.v
+      - pdk_dir::libs.ref/sg13cmos5l_sram/verilog/RM_IHPSG13_1P_512x8_c3_bm_bist.v
     lib:
       "*_typ_1p20V_25C":
-        - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x8_c3_bm_bist_typ_1p20V_25C.lib
+        - pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x8_c3_bm_bist_typ_1p20V_25C.lib
       "nom_fast_1p32V_m40C":
-        - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x8_c3_bm_bist_fast_1p32V_m55C.lib
+        - pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x8_c3_bm_bist_fast_1p32V_m55C.lib
       "nom_slow_1p08V_125C":
-        - dir::../../../PDK/ihp-sg13cmos5l/libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x8_c3_bm_bist_slow_1p08V_125C.lib
+        - pdk_dir::libs.ref/sg13cmos5l_sram/lib/RM_IHPSG13_1P_512x8_c3_bm_bist_slow_1p08V_125C.lib
     instances:
       act_sram_inst.gen_ihp_512x8.u_sram_512x8:
         location: [17.5, 25]
