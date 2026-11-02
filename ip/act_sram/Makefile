@@ -1,5 +1,5 @@
 REPO_ROOT := $(abspath ../..)
-PDK_ROOT ?= $(error PDK_ROOT is not set: directory holding your ciel PDKs)
+PDK_ROOT ?= $(abspath ../../../PDK)
 LL_DIR ?= $(abspath .)
 
 # Same PDK and LibreLane as the top level (versions.env, flake.nix)

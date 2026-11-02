@@ -75,7 +75,7 @@ if { $::env(PDN_MULTILAYER) == 1 } {
         -offset $::env(PDN_VOFFSET) \
         -spacing $::env(PDN_VSPACING) \
         -starts_with POWER \
-        {*}$arg_list
+        
 
     add_pdn_stripe \
         -grid stdcell_grid \
